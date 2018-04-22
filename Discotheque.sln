@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MobileApp", "MobileApp", "{6F05507A-A76A-4782-A059-234A31FD6503}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApp", "WebApp", "{9E50C32E-8A23-4203-99A5-20F90CA58474}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscothequeW", "WebApp\DiscothequeW\DiscothequeW.csproj", "{3524A79C-2734-4605-848D-7CCBAAC9C6C7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00.Kernel", "00.Kernel", "{4878AD12-394A-43C3-B24F-9ACE204AA3E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01.Common", "01.Common", "{1479BA51-08B0-4575-B605-98212768731E}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DiscothequeDb", "Kernel\DiscothequeDatabase\DiscothequeDb.sqlproj", "{CF555B9C-15AE-4094-874C-FA5388949871}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D.Services", "Common\D.Services\D.Services.csproj", "{5D7DFB82-7FD8-476F-A918-D8F83E32DF26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D.Models", "Common\D.Models\D.Models.csproj", "{D3EB5326-545B-49D4-B022-77F0F551B3F3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3524A79C-2734-4605-848D-7CCBAAC9C6C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3524A79C-2734-4605-848D-7CCBAAC9C6C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3524A79C-2734-4605-848D-7CCBAAC9C6C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3524A79C-2734-4605-848D-7CCBAAC9C6C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF555B9C-15AE-4094-874C-FA5388949871}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF555B9C-15AE-4094-874C-FA5388949871}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF555B9C-15AE-4094-874C-FA5388949871}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{CF555B9C-15AE-4094-874C-FA5388949871}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF555B9C-15AE-4094-874C-FA5388949871}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF555B9C-15AE-4094-874C-FA5388949871}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{5D7DFB82-7FD8-476F-A918-D8F83E32DF26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D7DFB82-7FD8-476F-A918-D8F83E32DF26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D7DFB82-7FD8-476F-A918-D8F83E32DF26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D7DFB82-7FD8-476F-A918-D8F83E32DF26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3EB5326-545B-49D4-B022-77F0F551B3F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3EB5326-545B-49D4-B022-77F0F551B3F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3EB5326-545B-49D4-B022-77F0F551B3F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3EB5326-545B-49D4-B022-77F0F551B3F3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3524A79C-2734-4605-848D-7CCBAAC9C6C7} = {9E50C32E-8A23-4203-99A5-20F90CA58474}
+		{CF555B9C-15AE-4094-874C-FA5388949871} = {4878AD12-394A-43C3-B24F-9ACE204AA3E8}
+		{5D7DFB82-7FD8-476F-A918-D8F83E32DF26} = {1479BA51-08B0-4575-B605-98212768731E}
+		{D3EB5326-545B-49D4-B022-77F0F551B3F3} = {1479BA51-08B0-4575-B605-98212768731E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {813D6FC5-B813-47CC-9543-AF68E4EF330A}
+	EndGlobalSection
+EndGlobal
