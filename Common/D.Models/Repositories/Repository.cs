@@ -39,8 +39,6 @@ namespace D.Models.Repositories
             _entities.UpdateRange(entities);
         }
 
-
-
         public virtual void Remove(TEntity entity)
         {
             _entities.Remove(entity);
@@ -51,12 +49,10 @@ namespace D.Models.Repositories
             _entities.RemoveRange(entities);
         }
 
-
         public virtual int Count()
         {
             return _entities.Count();
         }
-
 
         public virtual IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
         {

@@ -17,7 +17,7 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DiscothequeDb", "Kernel\Dis
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D.Services", "Common\D.Services\D.Services.csproj", "{5D7DFB82-7FD8-476F-A918-D8F83E32DF26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D.Models", "Common\D.Models\D.Models.csproj", "{D3EB5326-545B-49D4-B022-77F0F551B3F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "D.Models", "Common\D.Models\D.Models.csproj", "{D3EB5326-545B-49D4-B022-77F0F551B3F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

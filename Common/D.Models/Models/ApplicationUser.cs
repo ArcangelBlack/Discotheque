@@ -48,6 +48,6 @@ namespace D.Models.Models
         /// <summary>
         /// Demo Navigation property for orders this user has processed
         /// </summary>
-        public ICollection<Order> Orders { get; set; }
+        public ICollection<Music> Orders { get; set; }
     }
 }

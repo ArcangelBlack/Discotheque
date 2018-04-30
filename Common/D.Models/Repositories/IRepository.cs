@@ -4,6 +4,11 @@ using System.Linq.Expressions;
 
 namespace D.Models.Repositories
 {
+    public interface IEntityBase
+    {
+        int Id { get; set; }
+    }
+
     public interface IRepository<TEntity> where TEntity : class
     {
         void Add(TEntity entity);

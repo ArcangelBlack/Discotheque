@@ -27,6 +27,21 @@
                         <span class='glyphicon glyphicon-th-list'></span> Fetch data
                     </a>
                 </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/discotheques']">
+                        <span class='glyphicon glyphicon-user'></span> Discotheques
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/employees']">
+                        <span class='glyphicon glyphicon-user'></span> Employees
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/new']">
+                        <span class='glyphicon glyphicon-user'></span> New Employee
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

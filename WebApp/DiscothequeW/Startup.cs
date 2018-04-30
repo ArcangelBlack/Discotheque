@@ -1,5 +1,11 @@
 using D.Models;
+using D.Models.Interfaces;
+using D.Models.Models;
+using D.Models.Repositories;
 using DiscothequeW.Services;
+using DiscothequeW.Services.Interaces;
+using DiscothequeW.Services.Interfaces;
+using DiscothequeW.ViewModels.Mappings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
@@ -11,8 +17,11 @@ namespace DiscothequeW
 {
     public class Startup
     {
+        bool useInMemoryProvider = false;
+
         public Startup(IConfiguration configuration)
         {
+            //var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
             Configuration = configuration;
         }
 
@@ -22,21 +31,44 @@ namespace DiscothequeW
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            //services.AddEntityFrameworkSqlServer().AddDbContext<>(options=> options.UseSqlServer(Configuration["database:connection"]));
 
-            var connection = @"Server=(localdb)\mssqllocaldb;Database=DiscothequeDb;Trusted_Connection=True;ConnectRetryCount=0";
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection));
+            //string sqlConnectionString = Configuration.GetConnectionString("DefaultConnection");
+            //try
+            //{
+            //    useInMemoryProvider = bool.Parse(Configuration["AppSettings:InMemoryProvider"]);
+            //}
+            //catch { }
 
-            //services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //{
+            //    switch (useInMemoryProvider)
+            //    {
+            //        case true:
+            //            options.UseInMemoryDatabase();
+            //            break;
+            //        default:
+            //            //options.UseSqlServer(sqlConnectionString, b => b.MigrationsAssembly("DiscothequeW"));
+            //            options.UseSqlServer(@"Data Source=ITE-CCUMPA\SQLEXPRESS; Catalog=DiscothequeDb; Integrated Security=True;", b => b.UseRowNumberForPaging());
+            //            break;
+            //    }
+            //});
 
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            //services.AddScoped<IUserService, UserService>();
+            //services.AddScoped<IDiscothequeService, DiscothequeService>();
+            //services.AddScoped<ICompanyService, CompanyService>();
 
-            services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IDiscothequeService, DiscothequeService>();
-            services.AddScoped<ICompanyService, CompanyService>();
+            services.AddSingleton(provider => Configuration);
+            services.AddScoped<IEmployeeService, EmployeeService>();
+
+            // Automapper Configuration
+            //AutoMapperConfiguration.Configure();
 
             // DB Creation and Seeding
             //services.AddTransient<IDatabaseInitializer, DatabaseInitializer>();
+
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

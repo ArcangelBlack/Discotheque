@@ -8,11 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="6.2.2" />
+    <PackageReference Include="AutoMapper.Data" Version="1.0.1" />
+    <PackageReference Include="Google.Apis.Customsearch.v1" Version="1.33.0.1146" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,12 +36,32 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="IRepositoryManager.cs" />
+    <Compile Remove="RepositoryManager.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\app\components\detailsEmployee\detailsEmployee.component.ts" />
+    <None Remove="ClientApp\app\components\discotheques\discotheques.component.ts" />
+    <None Remove="ClientApp\app\components\editEmployee\editEmployee.component.ts" />
+    <None Remove="ClientApp\app\components\employees\employees.component.ts" />
+    <None Remove="ClientApp\app\components\newEmployee\newEmployee.component.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Logs\" />
-    <Folder Include="ViewModels\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Common\D.Models\D.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\components\detailsEmployee\detailsEmployee.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\discotheques\discotheques.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\editEmployee\editEmployee.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\employees\employees.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\newEmployee\newEmployee.component.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
