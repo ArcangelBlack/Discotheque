@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace D.Models.Repositories
 {
@@ -12,9 +13,9 @@ namespace D.Models.Repositories
 
         int Count();
 
-        T GetSingle(int id);
+        Task<T> GetSingle(int id);
 
-        T GetSingle(Expression<Func<T, bool>> predicate);
+        Task<T> GetSingle(Expression<Func<T, bool>> predicate);
 
         T GetSingle(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includeProperties);
 
@@ -28,6 +29,6 @@ namespace D.Models.Repositories
 
         void DeleteWhere(Expression<Func<T, bool>> predicate);
 
-        void Commit();
+        Task Commit();
     }
 }

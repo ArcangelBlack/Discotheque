@@ -13,9 +13,9 @@ import { CounterComponent } from './components/counter/counter.component';
 import { discothequesComponent } from './components/discotheques/discotheques.component';
 
 import { employeesComponent } from './components/employees/employees.component';
-import { detailsEmployeeComponent } from './components/detailsEmployee/detailsEmployee.component';
-import { newEmployeeComponent } from './components/newEmployee/newEmployee.component';
-import { editEmployeeComponent } from './components/editEmployee/editEmployee.component';
+import { detailsEmployeeComponent } from './components/employees/detailsEmployee/detailsEmployee.component';
+import { newEmployeeComponent } from './components/employees/newEmployee/newEmployee.component';
+import { editEmployeeComponent } from './components/employees/editEmployee/editEmployee.component';
 
 @NgModule({
     declarations: [

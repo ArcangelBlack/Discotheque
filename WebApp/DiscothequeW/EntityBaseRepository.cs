@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 using D.Models.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -40,14 +41,14 @@ namespace DiscothequeW
             return query.AsEnumerable();
         }
 
-        public T GetSingle(int id)
+        public async Task<T> GetSingle(int id)
         {
-            return _context.Set<T>().FirstOrDefault(x => x.Id == id);
+            return await _context.Set<T>().SingleOrDefaultAsync(x => x.Id == id);
         }
 
-        public T GetSingle(Expression<Func<T, bool>> predicate)
+        public async Task<T> GetSingle(Expression<Func<T, bool>> predicate)
         {
-            return _context.Set<T>().FirstOrDefault(predicate);
+            return await _context.Set<T>().SingleOrDefaultAsync(predicate);
         }
 
         public T GetSingle(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includeProperties)
@@ -93,9 +94,9 @@ namespace DiscothequeW
             }
         }
 
-        public virtual void Commit()
+        public virtual async Task Commit()
         {
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
     }
 }

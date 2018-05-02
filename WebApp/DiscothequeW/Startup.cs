@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json.Serialization;
 
 namespace DiscothequeW
 {
@@ -30,7 +31,11 @@ namespace DiscothequeW
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddCors();
+            services.AddMvc().AddJsonOptions(options =>
+            {
+                options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+            });
 
             //string sqlConnectionString = Configuration.GetConnectionString("DefaultConnection");
             //try
@@ -66,9 +71,7 @@ namespace DiscothequeW
             //AutoMapperConfiguration.Configure();
 
             // DB Creation and Seeding
-            //services.AddTransient<IDatabaseInitializer, DatabaseInitializer>();
-
-            services.AddMvc();
+            services.AddTransient<IDatabaseInitializer, DatabaseInitializer>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

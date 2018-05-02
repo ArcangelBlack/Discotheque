@@ -41,14 +41,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\app\components\detailsEmployee\detailsEmployee.component.ts" />
     <None Remove="ClientApp\app\components\discotheques\discotheques.component.ts" />
-    <None Remove="ClientApp\app\components\editEmployee\editEmployee.component.ts" />
     <None Remove="ClientApp\app\components\employees\employees.component.ts" />
-    <None Remove="ClientApp\app\components\newEmployee\newEmployee.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ClientApp\app\components\employees\Services\" />
     <Folder Include="Logs\" />
   </ItemGroup>
 
@@ -57,11 +55,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\app\components\detailsEmployee\detailsEmployee.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\discotheques\discotheques.component.ts" />
-    <TypeScriptCompile Include="ClientApp\app\components\editEmployee\editEmployee.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\employees\employees.component.ts" />
-    <TypeScriptCompile Include="ClientApp\app\components\newEmployee\newEmployee.component.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">

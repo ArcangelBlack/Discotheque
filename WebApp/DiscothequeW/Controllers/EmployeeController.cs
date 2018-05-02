@@ -30,7 +30,7 @@ namespace DiscothequeW.Controllers
 
         [HttpGet("[action]")]
         //public async Task<IActionResult> Get()
-        public IActionResult Get()
+        public IActionResult GetAll()
         {
             var ilIst = new List<Employee>();
 
@@ -44,9 +44,9 @@ namespace DiscothequeW.Controllers
         }
 
         [HttpGet("{id}", Name = "GetEmployee")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            var result = employeeService.GetSingle(u => u.Id == id);
+            var result = await employeeService.GetSingle(u => u.Id == id);
 
             if (result != null)
             {
@@ -60,7 +60,7 @@ namespace DiscothequeW.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody]Employee vM)
+        public async Task<IActionResult> Create([FromBody]Employee vM)
         {
 
             if (!ModelState.IsValid)
@@ -71,7 +71,7 @@ namespace DiscothequeW.Controllers
             //User _newUser = new User { Name = user.Name, Profession = user.Profession, Avatar = user.Avatar };
 
             employeeService.Add(vM);
-            employeeService.Commit();
+            await employeeService.Commit();
 
             //user = Mapper.Map<User, UserViewModel>(_newUser);
 
@@ -80,14 +80,14 @@ namespace DiscothequeW.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody]Employee vM)
+        public async Task<IActionResult> Put(int id, [FromBody]Employee vM)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var result = employeeService.GetSingle(id);
+            var result = await employeeService.GetSingle(id);
 
             if (result == null)
             {
@@ -98,7 +98,7 @@ namespace DiscothequeW.Controllers
                 //_userDb.Name = user.Name;
                 //_userDb.Profession = user.Profession;
                 //_userDb.Avatar = user.Avatar;
-                employeeService.Commit();
+                await employeeService.Commit();
             }
 
             //user = Mapper.Map<User, UserViewModel>(_userDb);
@@ -107,9 +107,9 @@ namespace DiscothequeW.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var result = employeeService.GetSingle(id);
+            var result = await employeeService.GetSingle(id);
 
             if (result == null)
             {
@@ -133,7 +133,7 @@ namespace DiscothequeW.Controllers
 
                 employeeService.Delete(result);
 
-                employeeService.Commit();
+                await employeeService.Commit();
 
                 return new NoContentResult();
             }
