@@ -1,20 +1,20 @@
 ﻿export class EmployeeModel {
 
-    public Id: number;
+    public Id: number | undefined;
 
-    public IdRol: number;
+    public IdRol: number | undefined;
 
-    public Name: string;
+    public Name: string | undefined;
 
-    public LastName: string;
+    public LastName: string | undefined;
 
-    public Age: number;
+    public Age: number | undefined;
 
     public BirthDate: string = "";
 
-    public Address: string;
+    public Address: string | undefined;
 
-    public Phone: string;
+    public Phone: string | undefined;
 
-    public Email: string;
+    public Email: string | undefined;
 }

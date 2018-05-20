@@ -17,6 +17,8 @@ import { detailsEmployeeComponent } from './components/employees/detailsEmployee
 import { newEmployeeComponent } from './components/employees/newEmployee/newEmployee.component';
 import { editEmployeeComponent } from './components/employees/editEmployee/editEmployee.component';
 
+import { downloadDocumentComponent } from './components/documents/downloadDocument/downloadDocument.component';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -28,7 +30,8 @@ import { editEmployeeComponent } from './components/employees/editEmployee/editE
         employeesComponent,
         detailsEmployeeComponent,
         newEmployeeComponent,
-        editEmployeeComponent  
+        editEmployeeComponent,
+        downloadDocumentComponent
     ],
     imports: [
         CommonModule,
@@ -44,6 +47,7 @@ import { editEmployeeComponent } from './components/employees/editEmployee/editE
             { path: 'details/:id', component: detailsEmployeeComponent },
             { path: 'new', component: newEmployeeComponent },
             { path: 'edit/:id', component: editEmployeeComponent }, 
+            { path: 'documents', component: downloadDocumentComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ]

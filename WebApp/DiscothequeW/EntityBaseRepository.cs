@@ -21,10 +21,9 @@ namespace DiscothequeW
             _context = context;
         }
         #endregion
-        public virtual IEnumerable<T> GetAll()
+        public virtual async Task<IEnumerable<T>> GetAll()
         {
-            var r = _context.Set<T>().AsEnumerable();
-            return r;
+            return await _context.Set<T>().ToListAsync();
         }
 
         public virtual int Count()

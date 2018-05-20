@@ -7,7 +7,7 @@ import { EmployeeModel } from '../employees/Employee.Model';
     templateUrl: './employees.component.html'
 })
 export class employeesComponent {
-    public EmployeeList: EmployeeModel[]; 
+    public EmployeeList: EmployeeModel[] | undefined; 
 
     constructor(http: Http, @Inject('BASE_URL') baseUrl: string) {
         http.get(baseUrl + 'api/Employee/GetAll').subscribe(result => {

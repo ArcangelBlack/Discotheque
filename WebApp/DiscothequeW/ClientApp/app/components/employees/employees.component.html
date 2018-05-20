@@ -1,4 +1,6 @@
-﻿<div class="row">
+﻿<button (click)="downloadFile()">Export</button>
+
+<div class="row">
     <div class="col-md-12">
         <h3>Employee List</h3>
         <br />
@@ -16,13 +18,16 @@
                         S.No.
                     </th>
                     <th>
-                        EmployeeName
+                        Name
+                    </th>
+                    <th>
+                        Last Name
                     </th>
                     <th>
                         Designation
                     </th>
                     <th>
-                        Project
+                        Phone
                     </th>
                     <th>
                         Action
@@ -31,7 +36,8 @@
             </thead>
             <tbody>
 
-                <tr *ngFor="let empData of EmployeeList; let i = index; trackBy: Id">
+                <!--<tr *ngFor="let empData of EmployeeList; let i = index; trackBy: Id">-->
+                <tr *ngFor="let empData of EmployeeList; let i = index;">
                     <td>
                         {{i+1}}
                     </td>
@@ -42,7 +48,10 @@
                         {{empData.LastName}}
                     </td>
                     <td>
-                        {{empData.Address}}
+                        {{empData.IdRol}}
+                    </td>
+                    <td>
+                        {{empData.Phone}}
                     </td>
                     <td>
 
@@ -50,7 +59,7 @@
                            class="btn btn-primary">
                             Detail
                         </a>
-                        <a [routerLink]="['/edit/',empData.Id]"
+                        <a [routerLink]="['/edit',empData.Id]"
                            class="btn btn-success">
                             Edit
                         </a>
@@ -60,6 +69,6 @@
                     </td>
                 </tr>
 
-        </table>
+</table>
     </div>
 </div>  

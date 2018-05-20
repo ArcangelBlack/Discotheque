@@ -29,24 +29,23 @@ namespace DiscothequeW.Controllers
         #endregion
 
         [HttpGet("[action]")]
-        //public async Task<IActionResult> Get()
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            var ilIst = new List<Employee>();
+            var result = new List<Employee>();
 
-            var result = employeeService.GetAll().ToList();
-            if (result.Any())
+            var resultService = await employeeService.GetAll();
+            var enumerable = resultService.ToList();
+            if (enumerable.Any())
             {
-                ilIst = result;
+                result = enumerable;
             }
-
-            return Json(ilIst);
+            return Json(result);
         }
 
-        [HttpGet("{id}", Name = "GetEmployee")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var result = await employeeService.GetSingle(u => u.Id == id);
+            var result = await employeeService.GetSingle(id);
 
             if (result != null)
             {
@@ -98,6 +97,7 @@ namespace DiscothequeW.Controllers
                 //_userDb.Name = user.Name;
                 //_userDb.Profession = user.Profession;
                 //_userDb.Avatar = user.Avatar;
+                employeeService.Update(vM);
                 await employeeService.Commit();
             }
 

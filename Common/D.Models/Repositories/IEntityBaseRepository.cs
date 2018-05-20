@@ -9,7 +9,7 @@ namespace D.Models.Repositories
     {
         IEnumerable<T> AllIncluding(params Expression<Func<T, object>>[] includeProperties);
 
-        IEnumerable<T> GetAll();
+        Task<IEnumerable<T>> GetAll();
 
         int Count();
 
