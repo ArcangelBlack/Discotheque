@@ -47,7 +47,7 @@ import { downloadDocumentComponent } from './components/documents/downloadDocume
             { path: 'details/:id', component: detailsEmployeeComponent },
             { path: 'new', component: newEmployeeComponent },
             { path: 'edit/:id', component: editEmployeeComponent }, 
-            { path: 'documents', component: downloadDocumentComponent },
+            { path: 'download', component: downloadDocumentComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ]

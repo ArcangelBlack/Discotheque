@@ -42,11 +42,29 @@
 
   <ItemGroup>
     <None Remove="ClientApp\app\components\discotheques\discotheques.component.ts" />
-    <None Remove="ClientApp\app\components\documents\Document.Model.ts" />
-    <None Remove="ClientApp\app\components\documents\downloadDocument\downloadDocument.component.ts" />
-    <None Remove="ClientApp\app\components\documents\Services\Document.service.ts" />
     <None Remove="ClientApp\app\components\employees\employees.component.ts" />
     <None Remove="ClientApp\app\components\employees\Services\employee.service.ts" />
+    <None Remove="StaticFiles\a.pdf" />
+    <None Remove="StaticFiles\a.rar" />
+    <None Remove="StaticFiles\a.zip" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ApplicationDefinition Include="StaticFiles\pdfs\a.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </ApplicationDefinition>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="StaticFiles\a.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StaticFiles\a.rar">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StaticFiles\a.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -59,11 +77,14 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\components\discotheques\discotheques.component.ts" />
-    <TypeScriptCompile Include="ClientApp\app\components\documents\Document.Model.ts" />
-    <TypeScriptCompile Include="ClientApp\app\components\documents\downloadDocument\downloadDocument.component.ts" />
-    <TypeScriptCompile Include="ClientApp\app\components\documents\Services\Document.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\employees\employees.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\employees\Services\Employee.service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="StaticFiles\SamplePdf.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">

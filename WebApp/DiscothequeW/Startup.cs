@@ -12,7 +12,9 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Newtonsoft.Json.Serialization;
+using System.IO;
 
 namespace DiscothequeW
 {
@@ -67,6 +69,8 @@ namespace DiscothequeW
             services.AddSingleton(provider => Configuration);
             services.AddScoped<IEmployeeService, EmployeeService>();
 
+            services.AddScoped<IPathProvider, PathProvider>();
+
             // Automapper Configuration
             //AutoMapperConfiguration.Configure();
 
@@ -77,6 +81,32 @@ namespace DiscothequeW
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseStaticFiles(); // For the wwwroot folder
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory())),
+                RequestPath = "/StaticFiles"
+            });
+
+            app.UseDirectoryBrowser(new DirectoryBrowserOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory())),
+                RequestPath = "/StaticFiles"
+            });
+
+            //app.UseStaticFiles(new StaticFileOptions
+            //{
+            //    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "pdfs")),
+            //    RequestPath = "/StaticFiles"
+            //});
+
+            //app.UseDirectoryBrowser(new DirectoryBrowserOptions
+            //{
+            //    FileProvider = new PhysicalFileProvider( Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "pdfs")),
+            //    RequestPath = "/StaticFiles"
+            //});
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
