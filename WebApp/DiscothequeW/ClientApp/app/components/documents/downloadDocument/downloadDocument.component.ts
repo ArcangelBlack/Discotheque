@@ -64,7 +64,7 @@ export class downloadDocumentComponent {
     }
 
     downloadFile1() {
-        
+
         let options = new RequestOptions({ responseType: ResponseContentType.ArrayBuffer });
         return this.http.get('http://twppdf.azurewebsites.net/api/values/4', options)
             .map((response: Response) => response).subscribe(data => {
@@ -306,15 +306,38 @@ export class downloadDocumentComponent {
         this.getFile("http://twppdf.azurewebsites.net/api/values/4")
             .subscribe(fileData => {
 
-                alert("7");
-
-                let b: any = new Blob([fileData], { type: 'application/octet-stream' });
-                //var url = window.URL.createObjectURL(b);
-                //window.open(url);
                 var filename = 'a.pdf';
-                window.navigator.msSaveBlob(b, filename);
+
+                if (window.navigator.msSaveOrOpenBlob) //IE & Edge
+                {
+                    alert("IE & Edge");
+
+                    let b: any = new Blob([fileData], { type: 'application/octet-stream' });
+                    //var url = window.URL.createObjectURL(b);
+                    //window.open(url);
+
+                    window.navigator.msSaveBlob(b, filename);
+                } else {
+
+                    alert("Chrome, Other");
+
+                    var linkElement = document.createElement('a');
+                    var blob = new Blob([fileData], { type: 'application/pdf' });
+
+                    var url = window.URL.createObjectURL(blob);
+
+                    linkElement.setAttribute('href', url);
+                    linkElement.setAttribute("download", filename);
+
+                    var clickEvent = new MouseEvent("click", {
+                        "view": window,
+                        "bubbles": true,
+                        "cancelable": false
+                    });
+                    linkElement.dispatchEvent(clickEvent);
+                }
             }
-        );
+            );
     }
 
 
