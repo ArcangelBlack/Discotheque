@@ -44,9 +44,10 @@ import { downloadDocumentComponent } from './components/documents/downloadDocume
             { path: 'fetch-data', component: FetchDataComponent },
             { path: 'discotheques', component: discothequesComponent },
             { path: 'employees', component: employeesComponent },
-            { path: 'details/:id', component: detailsEmployeeComponent },
+            { path: 'edit/:Id', component: editEmployeeComponent },
+            { path: 'details/:Id', component: detailsEmployeeComponent },
             { path: 'new', component: newEmployeeComponent },
-            { path: 'edit/:id', component: editEmployeeComponent }, 
+ 
             { path: 'download', component: downloadDocumentComponent },
             { path: '**', redirectTo: 'home' }
         ])

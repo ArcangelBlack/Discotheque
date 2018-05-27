@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using D.Models.Models;
@@ -7,21 +8,19 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DiscothequeW.Controllers
 {
-    [Produces("application/json")]
-    [Route("api/[controller]")]
-    public class EmployeeController : Controller
+    public class MusicController : Controller
     {
         #region Fields
 
-        private readonly IEmployeeService employeeService;
+        private readonly IMusicService musicService;
 
         #endregion
 
         #region Constructor
 
-        public EmployeeController(IEmployeeService employeeService)
+        public MusicController(IMusicService musicService)
         {
-            this.employeeService = employeeService;
+            this.musicService = musicService;
         }
 
         #endregion
@@ -29,9 +28,9 @@ namespace DiscothequeW.Controllers
         [HttpGet("[action]")]
         public async Task<IActionResult> GetAll()
         {
-            var result = new List<Employee>();
+            var result = new List<Music>();
 
-            var resultService = await this.employeeService.GetAll();
+            var resultService = await this.musicService.GetAll();
             var enumerable = resultService.ToList();
             if (enumerable.Any())
             {
@@ -43,7 +42,7 @@ namespace DiscothequeW.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var result = await this.employeeService.GetSingle(id);
+            var result = await this.musicService.GetSingle(id);
 
             if (result != null)
             {
@@ -57,7 +56,7 @@ namespace DiscothequeW.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody]Employee vM)
+        public async Task<IActionResult> Create([FromBody]Music vM)
         {
 
             if (!ModelState.IsValid)
@@ -67,8 +66,8 @@ namespace DiscothequeW.Controllers
 
             //User _newUser = new User { Name = user.Name, Profession = user.Profession, Avatar = user.Avatar };
 
-            this.employeeService.Add(vM);
-            await this.employeeService.Commit();
+            this.musicService.Add(vM);
+            await this.musicService.Commit();
 
             //user = Mapper.Map<User, UserViewModel>(_newUser);
 
@@ -77,14 +76,14 @@ namespace DiscothequeW.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody]Employee vM)
+        public async Task<IActionResult> Put(int id, [FromBody]Music vM)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var result = await this.employeeService.GetSingle(id);
+            var result = await this.musicService.GetSingle(id);
 
             if (result == null)
             {
@@ -92,8 +91,8 @@ namespace DiscothequeW.Controllers
             }
             else
             {
-                this.employeeService.Update(vM);
-                await this.employeeService.Commit();
+                this.musicService.Update(vM);
+                await this.musicService.Commit();
             }
 
             //user = Mapper.Map<User, UserViewModel>(_userDb);
@@ -104,7 +103,7 @@ namespace DiscothequeW.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var result = await this.employeeService.GetSingle(id);
+            var result = await this.musicService.GetSingle(id);
 
             if (result == null)
             {
@@ -126,9 +125,9 @@ namespace DiscothequeW.Controllers
                 //    _scheduleRepository.Delete(schedule);
                 //}
 
-                this.employeeService.Delete(result);
+                this.musicService.Delete(result);
 
-                await this.employeeService.Commit();
+                await this.musicService.Commit();
 
                 return new NoContentResult();
             }

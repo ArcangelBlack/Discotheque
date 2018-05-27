@@ -1,6 +1,6 @@
-﻿CREATE TABLE [dbo].[User]
+﻿CREATE TABLE [dbo].[AppUser]
 (
-	[Id]			INT				NOT NULL PRIMARY KEY, 
+	[Id]			INT				NOT NULL PRIMARY KEY IDENTITY, 
 	[IdRol]			INT				NOT NULL, 
     [Name]			NVARCHAR(50)	NOT NULL, 
     [LastName]		NVARCHAR(50)	NOT NULL, 
@@ -12,6 +12,10 @@
     [Gender]		INT	NULL,   
 	[Facebook]		NVARCHAR(50)	NULL, 
     [Gmail]			NVARCHAR(50)	NULL, 
-    [Instagram]		NVARCHAR(50)	NULL,    
-    CONSTRAINT [FK_User_Role] FOREIGN KEY (IdRol) REFERENCES [Roles]([Id]), 
+    [Instagram]		NVARCHAR(50)	NULL,   
+	[CreatedBy]			NVARCHAR(50)	NULL, 
+    [UpdatedBy]			NVARCHAR(50)	NULL, 
+    [UpdatedDate]		DATETIME2		NULL, 
+    [CreatedDate]		DATETIME2		NULL
+    CONSTRAINT [FK_User_Role] FOREIGN KEY (IdRol) REFERENCES [AppRoles]([Id]), 
 )

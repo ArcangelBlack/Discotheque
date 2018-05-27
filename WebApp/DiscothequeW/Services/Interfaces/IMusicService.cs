@@ -3,5 +3,5 @@ using D.Models.Repositories;
 
 namespace DiscothequeW.Services.Interfaces
 {
-    public interface IUserService : IEntityBaseRepository<User> { }
+    public interface IMusicService : IEntityBaseRepository<Music> { }
 }

@@ -14,49 +14,125 @@ namespace DiscothequeW.Controllers
     {
         #region Fields
 
-        //private readonly IUserService userService;
+        private readonly IUserService userService;
 
         #endregion
 
-        public IActionResult Index()
+        #region Constructor
+
+        public UserController(IUserService userService)
         {
-            return View();
+            this.userService = userService;
         }
 
-        //[HttpGet("{id}", Name = "GetUser")]
-        //public IActionResult Get(int id)
-        //{
-        //    var _user = userService.GetSingle(u => u.Id == id);
+        #endregion
 
-        //    if (_user != null)
-        //    {
-        //        var userVm = Mapper.Map<User, UserVm>(_user);
-        //        return new OkObjectResult(userVm);
-        //    }
-        //    else
-        //    {
-        //        return NotFound();
-        //    }
-        //}
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetAll()
+        {
+            var result = new List<User>();
 
-        //[HttpPost]
-        //public IActionResult Create([FromBody]UserVm user)
-        //{
+            var resultService = await this.userService.GetAll();
+            var enumerable = resultService.ToList();
+            if (enumerable.Any())
+            {
+                result = enumerable;
+            }
+            return Json(result);
+        }
 
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            var result = await this.userService.GetSingle(id);
 
-        //    User _newUser = new User { Name = user., Profession = user.Profession, Avatar = user.Avatar };
+            if (result != null)
+            {
+                //var _userVM = Mapper.Map<User, UserViewModel>(_user);
+                return new OkObjectResult(result);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
 
-        //    userService.Add(_newUser);
-        //    userService.Commit();
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody]User vM)
+        {
 
-        //    user = Mapper.Map<User, UserVm>(_newUser);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-        //    CreatedAtRouteResult result = CreatedAtRoute("GetUser", new { controller = "Users", id = user.Id }, user);
-        //    return result;
-        //}
+            //User _newUser = new User { Name = user.Name, Profession = user.Profession, Avatar = user.Avatar };
+
+            this.userService.Add(vM);
+            await this.userService.Commit();
+
+            //user = Mapper.Map<User, UserViewModel>(_newUser);
+
+            CreatedAtRouteResult result = CreatedAtRoute("GetEmployee", new { controller = "Employee", id = vM.Id }, vM);
+            return result;
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, [FromBody]User vM)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var result = await this.userService.GetSingle(id);
+
+            if (result == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                this.userService.Update(vM);
+                await this.userService.Commit();
+            }
+
+            //user = Mapper.Map<User, UserViewModel>(_userDb);
+
+            return new NoContentResult();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var result = await this.userService.GetSingle(id);
+
+            if (result == null)
+            {
+                return new NotFoundResult();
+            }
+            else
+            {
+                //IEnumerable<Attendee> _attendees = _attendeeRepository.FindBy(a => a.UserId == id);
+                //IEnumerable<Schedule> _schedules = _scheduleRepository.FindBy(s => s.CreatorId == id);
+
+                //foreach (var attendee in _attendees)
+                //{
+                //    _attendeeRepository.Delete(attendee);
+                //}
+
+                //foreach (var schedule in _schedules)
+                //{
+                //    _attendeeRepository.DeleteWhere(a => a.ScheduleId == schedule.Id);
+                //    _scheduleRepository.Delete(schedule);
+                //}
+
+                this.userService.Delete(result);
+
+                await this.userService.Commit();
+
+                return new NoContentResult();
+            }
+        }
     }
 }

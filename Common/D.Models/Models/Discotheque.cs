@@ -7,10 +7,11 @@ namespace D.Models.Models
 {
     public class Discotheque : AuditableEntity, IEntityBase
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public int IdCompany { get; set; }
+        public int CompanyId { get; set; }
 
         [Required]
         public string Name { get; set; }
@@ -18,7 +19,7 @@ namespace D.Models.Models
         [Required]
         public string Address { get; set; }
 
-        public string Cp { get; set;}
+        public string Cp { get; set; }
 
         [Required]
         public string PhoneNumber { get; set; }
@@ -41,5 +42,7 @@ namespace D.Models.Models
         public string Facebook { get; set; }
 
         public ICollection<DiscothequeDetail> DiscothequeDetails { get; set; }
+
+        public Company Company { get; set; }
     }
 }

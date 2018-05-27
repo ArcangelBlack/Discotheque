@@ -60,18 +60,17 @@
     <Folder Include="Properties" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Discotheque.sql" />
-    <Build Include="Employee.sql" />
-    <Build Include="Company.sql" />
-    <Build Include="Category.sql" />
-    <Build Include="Calendar.sql" />
-    <Build Include="Music.sql" />
-    <Build Include="NewsEvents.sql" />
-    <Build Include="T_Discotheque_Points.sql" />
-    <Build Include="Login.sql" />
-    <Build Include="Roles.sql" />
-    <Build Include="Project.sql" />
-    <Build Include="User.sql" />
+    <Build Include="AppDiscotheque.sql" />
+    <Build Include="AppEmployee.sql" />
+    <Build Include="AppCompany.sql" />
+    <Build Include="AppCategory.sql" />
+    <Build Include="AppCalendar.sql" />
+    <Build Include="AppMusic.sql" />
+    <Build Include="AppNewsEvents.sql" />
+    <Build Include="AppT_Discotheque_Points.sql" />
+    <Build Include="AppLogin.sql" />
+    <Build Include="AppRoles.sql" />
+    <Build Include="AppUser.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="DiscothequeDb.refactorlog" />

@@ -40,8 +40,6 @@ namespace DiscothequeW.Migrations
                     b.Property<string>("Email")
                         .IsRequired();
 
-                    b.Property<int>("IdRol");
-
                     b.Property<string>("Logo");
 
                     b.Property<string>("Name")
@@ -49,8 +47,6 @@ namespace DiscothequeW.Migrations
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired();
-
-                    b.Property<int?>("RolId");
 
                     b.Property<string>("Ruc")
                         .IsRequired();
@@ -62,19 +58,18 @@ namespace DiscothequeW.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RolId");
-
-                    b.ToTable("AppCompanies");
+                    b.ToTable("AppCompanie");
                 });
 
             modelBuilder.Entity("D.Models.Models.Discotheque", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Address")
                         .IsRequired();
 
-                    b.Property<int?>("CompanyId");
+                    b.Property<int>("CompanyId");
 
                     b.Property<string>("Cp");
 
@@ -87,8 +82,6 @@ namespace DiscothequeW.Migrations
 
                     b.Property<string>("Facebook")
                         .IsRequired();
-
-                    b.Property<int>("IdCompany");
 
                     b.Property<double>("Latitud");
 
@@ -116,7 +109,7 @@ namespace DiscothequeW.Migrations
 
                     b.HasIndex("CompanyId");
 
-                    b.ToTable("AppDiscotheques");
+                    b.ToTable("AppDiscotheque");
                 });
 
             modelBuilder.Entity("D.Models.Models.DiscothequeCategory", b =>
@@ -138,7 +131,7 @@ namespace DiscothequeW.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AppDiscothequeCategories");
+                    b.ToTable("AppDiscothequeCategorie");
                 });
 
             modelBuilder.Entity("D.Models.Models.DiscothequeDetail", b =>
@@ -146,13 +139,9 @@ namespace DiscothequeW.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("DiscothequeCategoryId");
+                    b.Property<int>("DiscothequeCategoryId");
 
-                    b.Property<int?>("DiscothequeId");
-
-                    b.Property<int>("IdDiscotheque");
-
-                    b.Property<int>("IdDiscothequeCategory");
+                    b.Property<int>("DiscothequeId");
 
                     b.HasKey("Id");
 
@@ -160,7 +149,7 @@ namespace DiscothequeW.Migrations
 
                     b.HasIndex("DiscothequeId");
 
-                    b.ToTable("AppDiscothequeDetails");
+                    b.ToTable("AppDiscothequeDetail");
                 });
 
             modelBuilder.Entity("D.Models.Models.Employee", b =>
@@ -183,15 +172,13 @@ namespace DiscothequeW.Migrations
 
                     b.Property<int>("Gender");
 
-                    b.Property<int>("IdRol");
-
                     b.Property<string>("LastName");
 
                     b.Property<string>("Name");
 
                     b.Property<string>("Phone");
 
-                    b.Property<int?>("RolId");
+                    b.Property<int>("RolId");
 
                     b.Property<string>("UpdatedBy")
                         .HasMaxLength(256);
@@ -202,7 +189,7 @@ namespace DiscothequeW.Migrations
 
                     b.HasIndex("RolId");
 
-                    b.ToTable("AppEmployees");
+                    b.ToTable("AppEmployee");
                 });
 
             modelBuilder.Entity("D.Models.Models.Music", b =>
@@ -217,20 +204,18 @@ namespace DiscothequeW.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<int>("IdCustomer");
-
                     b.Property<string>("UpdatedBy")
                         .HasMaxLength(256);
 
                     b.Property<DateTime>("UpdatedDate");
 
-                    b.Property<int?>("UserId");
+                    b.Property<int>("UserId");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AppMusics");
+                    b.ToTable("AppMusic");
                 });
 
             modelBuilder.Entity("D.Models.Models.MusicDetail", b =>
@@ -243,15 +228,11 @@ namespace DiscothequeW.Migrations
 
                     b.Property<DateTime>("CreatedDate");
 
-                    b.Property<int?>("DiscothequeId");
+                    b.Property<int>("DiscothequeId");
 
                     b.Property<decimal>("Discount");
 
-                    b.Property<int>("IdDiscotheque");
-
-                    b.Property<int>("IdMusic");
-
-                    b.Property<int?>("MusicId");
+                    b.Property<int>("MusicId");
 
                     b.Property<string>("UpdatedBy")
                         .HasMaxLength(256);
@@ -264,7 +245,7 @@ namespace DiscothequeW.Migrations
 
                     b.HasIndex("MusicId");
 
-                    b.ToTable("AppMusicDetails");
+                    b.ToTable("AppMusicDetail");
                 });
 
             modelBuilder.Entity("D.Models.Models.Rol", b =>
@@ -286,7 +267,7 @@ namespace DiscothequeW.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AppRols");
+                    b.ToTable("AppRol");
                 });
 
             modelBuilder.Entity("D.Models.Models.User", b =>
@@ -310,8 +291,6 @@ namespace DiscothequeW.Migrations
 
                     b.Property<int>("Gender");
 
-                    b.Property<int>("IdRol");
-
                     b.Property<string>("LastName")
                         .IsRequired();
 
@@ -321,7 +300,7 @@ namespace DiscothequeW.Migrations
                     b.Property<string>("PhoneNumber")
                         .IsRequired();
 
-                    b.Property<int?>("RolId");
+                    b.Property<int>("RolId");
 
                     b.Property<string>("UpdatedBy")
                         .HasMaxLength(256);
@@ -332,20 +311,12 @@ namespace DiscothequeW.Migrations
 
                     b.HasIndex("RolId");
 
-                    b.ToTable("AppUsers");
-                });
-
-            modelBuilder.Entity("D.Models.Models.Company", b =>
-                {
-                    b.HasOne("D.Models.Models.Rol", "Rol")
-                        .WithMany()
-                        .HasForeignKey("RolId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                    b.ToTable("AppUser");
                 });
 
             modelBuilder.Entity("D.Models.Models.Discotheque", b =>
                 {
-                    b.HasOne("D.Models.Models.Company")
+                    b.HasOne("D.Models.Models.Company", "Company")
                         .WithMany("Discotheques")
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Restrict);

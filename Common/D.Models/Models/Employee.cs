@@ -12,7 +12,7 @@ namespace D.Models.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public int IdRol { get; set; }
+        public int RolId { get; set; }
 
         public string Name { get; set; }
 

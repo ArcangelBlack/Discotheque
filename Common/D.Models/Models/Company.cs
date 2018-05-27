@@ -13,8 +13,6 @@ namespace D.Models.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public int IdRol { get; set; }
-
         [Required]
         public string Ruc { get; set; }
 
@@ -36,8 +34,6 @@ namespace D.Models.Models
         public string Logo { get; set; }
 
         public ICollection<Discotheque> Discotheques { get; set; }
-
-        public Rol Rol { get; set; }
 
     }
 }

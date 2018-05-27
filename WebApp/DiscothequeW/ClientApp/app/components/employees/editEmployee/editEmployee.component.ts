@@ -19,7 +19,7 @@ export class editEmployeeComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.ID = this._routeParams.snapshot.params['ID'];
+        this.ID = this._routeParams.snapshot.params['Id'];
 
         if (this.ID != null) {
             this.employeeService.editEmployee(this.ID).subscribe(data => {
