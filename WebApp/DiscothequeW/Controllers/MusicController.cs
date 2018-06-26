@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DiscothequeW.Controllers
 {
+    [Produces("application/json")]
+    [Route("api/[controller]")]
     public class MusicController : Controller
     {
         #region Fields

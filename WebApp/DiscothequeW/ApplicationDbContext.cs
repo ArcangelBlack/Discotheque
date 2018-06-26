@@ -47,7 +47,7 @@ namespace DiscothequeW
             builder.Entity<Discotheque>().ToTable($"App{nameof(this.Discotheque)}");
             builder.Entity<DiscothequeCategory>().ToTable($"App{nameof(this.DiscothequeCategorie)}");
             builder.Entity<DiscothequeDetail>().ToTable($"App{nameof(this.DiscothequeDetail)}");
-            builder.Entity<Company>().ToTable($"App{nameof(this.Employee)}");
+            builder.Entity<Employee>().ToTable($"App{nameof(this.Employee)}");
             builder.Entity<Music>().ToTable($"App{nameof(this.Music)}");
             builder.Entity<MusicDetail>().ToTable($"App{nameof(this.MusicDetail)}");
             builder.Entity<User>().ToTable($"App{nameof(this.User)}");

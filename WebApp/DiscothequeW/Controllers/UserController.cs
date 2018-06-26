@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AutoMapper;
 using D.Models.Models;
 using DiscothequeW.Services.Interfaces;
-using DiscothequeW.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DiscothequeW.Controllers
 {
+    [Produces("application/json")]
+    [Route("api/[controller]")]
     public class UserController : Controller
     {
         #region Fields

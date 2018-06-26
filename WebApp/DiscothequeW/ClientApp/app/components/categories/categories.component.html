@@ -1,6 +1,4 @@
-﻿<button (click)="downloadFile()">Nuevo</button>
-
-<div class="row">
+﻿<div class="row">
     <div class="col-md-12">
         <h3>Employee List</h3>
         <br />
@@ -37,11 +35,11 @@
                     </td>
                     <td>
 
-                        <a [routerLink]="['/details/',empData.Id]"
+                        <a [routerLink]="['details/',empData.Id]"
                            class="btn btn-primary">
                             Detail
                         </a>
-                        <a [routerLink]="['/edit',empData.Id]"
+                        <a [routerLink]="['edit',empData.Id]"
                            class="btn btn-success">
                             Edit
                         </a>
