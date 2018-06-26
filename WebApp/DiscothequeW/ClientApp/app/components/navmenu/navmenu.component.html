@@ -28,8 +28,23 @@
                     </a>
                 </li>
                 <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/categories']">
+                        <span class='glyphicon glyphicon-user'></span> Categories
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/companies']">
+                        <span class='glyphicon glyphicon-user'></span> Campanies
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
                     <a [routerLink]="['/discotheques']">
                         <span class='glyphicon glyphicon-user'></span> Discotheques
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/download']">
+                        <span class='glyphicon glyphicon-user'></span> Download Documents
                     </a>
                 </li>
                 <li [routerLinkActive]="['link-active']">
@@ -38,13 +53,8 @@
                     </a>
                 </li>
                 <li [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['employee/new']">
-                        <span class='glyphicon glyphicon-user'></span> New Employee
-                    </a>
-                </li>
-                <li [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/download']">
-                        <span class='glyphicon glyphicon-user'></span> Download Documents
+                    <a [routerLink]="['/users']">
+                        <span class='glyphicon glyphicon-user'></span> Users
                     </a>
                 </li>
             </ul>

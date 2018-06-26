@@ -11,7 +11,7 @@ export class categoriesComponent {
 
     constructor(http: Http, @Inject('BASE_URL') baseUrl: string) {
         http.get(baseUrl + 'api/Category/GetAll').subscribe(result => {
-            this.DiscothequesList = result.json();
+            this.CategoriesList = result.json();
         }, error => console.error(error));
     }
 }

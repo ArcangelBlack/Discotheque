@@ -14,9 +14,7 @@ export class editEmployeeComponent implements OnInit {
     ID: string | undefined;
     private data: any;
 
-    constructor(private employeeService: EmployeeService, private route: Router, private _routeParams: ActivatedRoute) {
-
-    }
+    constructor(private employeeService: EmployeeService, private route: Router, private _routeParams: ActivatedRoute) { }
 
     ngOnInit(): void {
         this.ID = this._routeParams.snapshot.params['Id'];
@@ -38,8 +36,8 @@ export class editEmployeeComponent implements OnInit {
             if (data == true) {
                 alert("Your Data Update Successfully ");
                 this.route.navigate(['employees']);
-            }else {
-                alert("Problem While Adding Cars");
+            } else {
+                alert("Problem While Adding Employee");
             }
         }, error => {
             if (error) {

@@ -4,11 +4,11 @@ import { CategoryModel } from '../Category.Model';
 import { CategoryService } from '../Services/Category.service';
 
 @Component({
-    selector: 'edit-category',
-    templateUrl: './editCategory.component.html',
+    selector: 'details-category',
+    templateUrl: './detailsCategory.component.html',
     providers: [CategoryService]
 })
-export class editCategoryComponent implements OnInit {
+export class detailsCategoryComponent implements OnInit {
 
     currentModel: CategoryModel = new CategoryModel();
     ID: string | undefined;
@@ -28,19 +28,5 @@ export class editCategoryComponent implements OnInit {
                 }
             })
         }
-    }
-
-    onSubmit() {
-        var formData = this.currentModel;
-        this.categoryService.updateCategory(formData).subscribe(data => {
-            if (data == true) {
-                alert("Your Data Update Successfully ");
-                this.route.navigate(['categories']);
-            }
-        }, error => {
-            if (error) {
-                alert("An Error has occured please try again after some time !");
-            }
-        })
     }
 }

@@ -1,27 +1,27 @@
 ﻿import { Component, OnInit } from '@angular/core';
+import { UserModel } from '../User.Model';
 import { Router, ActivatedRoute } from '@angular/router'
-import { CategoryModel } from '../Category.Model';
-import { CategoryService } from '../Services/Category.service';
+import { UserService } from '../Services/User.service';
 
 @Component({
-    selector: 'edit-category',
-    templateUrl: './editCategory.component.html',
-    providers: [CategoryService]
+    selector: 'edit-user',
+    templateUrl: './edituser.component.html',
+    providers: [UserService]
 })
-export class editCategoryComponent implements OnInit {
+export class editUserComponent implements OnInit {
 
-    currentModel: CategoryModel = new CategoryModel();
+    currentModel: UserModel = new UserModel();
     ID: string | undefined;
     private data: any;
 
-    constructor(private categoryService: CategoryService, private route: Router, private _routeParams: ActivatedRoute) { }
+    constructor(private userService: UserService, private route: Router, private _routeParams: ActivatedRoute) { }
 
     ngOnInit(): void {
         this.ID = this._routeParams.snapshot.params['Id'];
 
         if (this.ID != null) {
-            this.categoryService.editCategory(this.ID).subscribe(data => {
-                this.currentModel = <CategoryModel>data;
+            this.userService.editUser(this.ID).subscribe(data => {
+                this.currentModel = <UserModel>data;
             }, error => {
                 if (error) {
                     alert("An Error has occured please try again after some time !");
@@ -32,10 +32,10 @@ export class editCategoryComponent implements OnInit {
 
     onSubmit() {
         var formData = this.currentModel;
-        this.categoryService.updateCategory(formData).subscribe(data => {
+        this.userService.updateUser(formData).subscribe(data => {
             if (data == true) {
                 alert("Your Data Update Successfully ");
-                this.route.navigate(['categories']);
+                this.route.navigate(['users']);
             }
         }, error => {
             if (error) {
@@ -43,4 +43,5 @@ export class editCategoryComponent implements OnInit {
             }
         })
     }
+
 }

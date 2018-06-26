@@ -2,7 +2,6 @@
 import { Http } from '@angular/http';
 import { CompanyModel } from '../companies/Company.Model';
 
-
 @Component({
     selector: 'companies',
     templateUrl: './companies.component.html'

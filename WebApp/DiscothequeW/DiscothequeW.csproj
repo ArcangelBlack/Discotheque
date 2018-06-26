@@ -43,12 +43,16 @@
   <ItemGroup>
     <None Remove="ClientApp\app\components\categories\categories.component.ts" />
     <None Remove="ClientApp\app\components\categories\Category.Model.ts" />
-    <None Remove="ClientApp\app\components\categories\detailsCategory\detailCategory.component.ts" />
+    <None Remove="ClientApp\app\components\categories\detailsCategory\detailsCategory.component.ts" />
     <None Remove="ClientApp\app\components\categories\editCategory\editCategory.component.ts" />
     <None Remove="ClientApp\app\components\categories\newCategory\newCategory.component.ts" />
     <None Remove="ClientApp\app\components\categories\Services\Category.service.ts" />
     <None Remove="ClientApp\app\components\companies\companies.component.ts" />
     <None Remove="ClientApp\app\components\companies\Company.Model.ts" />
+    <None Remove="ClientApp\app\components\companies\detailsCompany\detailsCompany.component.ts" />
+    <None Remove="ClientApp\app\components\companies\editCompany\editCompany.component.ts" />
+    <None Remove="ClientApp\app\components\companies\newCompany\newCompany.component.ts" />
+    <None Remove="ClientApp\app\components\companies\Services\Company.service.ts" />
     <None Remove="ClientApp\app\components\discotheques\detailsDiscotheque\detailsDiscotheque.component.ts" />
     <None Remove="ClientApp\app\components\discotheques\Discotheque.Model.ts" />
     <None Remove="ClientApp\app\components\discotheques\discotheques.component.ts" />
@@ -57,6 +61,12 @@
     <None Remove="ClientApp\app\components\discotheques\Services\Discotheque.service.ts" />
     <None Remove="ClientApp\app\components\employees\employees.component.ts" />
     <None Remove="ClientApp\app\components\employees\Services\employee.service.ts" />
+    <None Remove="ClientApp\app\components\users\detailsUser\detailsUser.component.ts" />
+    <None Remove="ClientApp\app\components\users\editUser\editUser.component.ts" />
+    <None Remove="ClientApp\app\components\users\newUser\newUser.component.ts" />
+    <None Remove="ClientApp\app\components\users\Services\User.service.ts" />
+    <None Remove="ClientApp\app\components\users\User.Model.ts" />
+    <None Remove="ClientApp\app\components\users\users.component.ts" />
     <None Remove="StaticFiles\a.pdf" />
     <None Remove="StaticFiles\a.rar" />
     <None Remove="StaticFiles\a.zip" />
@@ -81,10 +91,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\app\components\companies\detailsCompany\" />
-    <Folder Include="ClientApp\app\components\companies\editCompany\" />
-    <Folder Include="ClientApp\app\components\companies\newCompany\" />
-    <Folder Include="ClientApp\app\components\companies\Services\" />
+    <Folder Include="ClientApp\app\components\musics\" />
     <Folder Include="Logs\" />
   </ItemGroup>
 
@@ -95,12 +102,16 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\components\categories\categories.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\categories\Category.Model.ts" />
-    <TypeScriptCompile Include="ClientApp\app\components\categories\detailsCategory\detailCategory.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\categories\detailsCategory\detailsCategory.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\categories\editCategory\editCategory.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\categories\newCategory\newCategory.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\categories\Services\Category.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\companies\companies.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\companies\Company.Model.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\companies\detailsCompany\detailsCompany.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\companies\editCompany\editCompany.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\companies\newCompany\newCompany.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\companies\Services\Company.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\discotheques\detailsDiscotheque\detailsDiscotheque.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\discotheques\Discotheque.Model.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\discotheques\discotheques.component.ts" />
@@ -109,6 +120,12 @@
     <TypeScriptCompile Include="ClientApp\app\components\discotheques\Services\Discotheque.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\employees\employees.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\employees\Services\Employee.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\users\detailsUser\detailsUser.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\users\editUser\editUser.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\users\newUser\newUser.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\users\Services\User.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\users\User.Model.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\users\users.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
