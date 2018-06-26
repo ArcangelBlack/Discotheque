@@ -31,7 +31,6 @@ export class EmployeeService {
     }
 
     public addEmployee(currentmodel: EmployeeModel) {
-
         this.actionPostUrl = this.baseUrl + this.actionUrl;
         return this.http.post(this.actionPostUrl, currentmodel).map((res: Response) => res.json()).catch(response => {
             if (response.status === 401) {
@@ -43,7 +42,6 @@ export class EmployeeService {
     }
 
     public editEmployee(employeeId: string) {
-
         this.actionGetUrl = this.baseUrl + this.actionUrl + employeeId;
         return this.http.get(this.actionGetUrl).map((res: Response) => <any>res.json()).catch(response => {
             if (response.status === 401) {
@@ -55,7 +53,6 @@ export class EmployeeService {
     }
 
     public updateEmployee(currentmodel: EmployeeModel) {
-
         this.actionPutUrl = this.baseUrl + this.actionUrl + currentmodel.Id;
         return this.http.put(this.actionPutUrl, currentmodel).map((res: Response) => res.json()).catch(response => {
             if (response.status === 401) {

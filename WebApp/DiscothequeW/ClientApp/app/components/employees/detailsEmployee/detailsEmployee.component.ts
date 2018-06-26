@@ -14,9 +14,7 @@ export class detailsEmployeeComponent implements OnInit {
     ID: string | undefined;
     private data: any;
 
-    constructor(private employeeService: EmployeeService, private route: Router, private _routeParams: ActivatedRoute) {
-
-    }
+    constructor(private employeeService: EmployeeService, private route: Router, private _routeParams: ActivatedRoute) { }
 
     ngOnInit(): void {
         this.ID = this._routeParams.snapshot.params['Id'];

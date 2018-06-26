@@ -45,7 +45,8 @@ namespace DiscothequeW
                     new Rol(){ Description = "User", CreatedBy = createdBy, CreatedDate = referenceDate, UpdatedBy = createdBy, UpdatedDate = referenceDate},
                 };
 
-                try {
+                try
+                {
                     foreach (var s in iRols)
                     {
                         context.Rol.Add(s);
@@ -68,11 +69,12 @@ namespace DiscothequeW
                 {
                     new Employee()
                     {
-                        RolId = 1, Name = "Admin", LastName = "(Super Admin)", Address = "CPU", Age = 30, Gender = Gender.Male, CreatedBy = createdBy, CreatedDate = referenceDate, UpdatedBy = createdBy, UpdatedDate = referenceDate
+                        Name = "Admin",  Address = "CPU", CreatedBy = createdBy, CreatedDate = referenceDate, UpdatedBy = createdBy, UpdatedDate = referenceDate
                     },
                 };
 
-                try {
+                try
+                {
                     foreach (var s in iEmployees)
                     {
                         context.Employee.Add(s);
@@ -108,7 +110,8 @@ namespace DiscothequeW
                     },
                 };
 
-                try {
+                try
+                {
                     foreach (var s in iCompanies)
                     {
                         context.Companie.Add(s);
@@ -134,7 +137,8 @@ namespace DiscothequeW
                     new DiscothequeCategory() { Description = "Discotheque", CreatedBy = createdBy, CreatedDate = referenceDate, UpdatedBy = createdBy, UpdatedDate = referenceDate },
                 };
 
-                try {
+                try
+                {
                     foreach (var s in iDiscothequeCategories)
                     {
                         context.DiscothequeCategorie.Add(s);
@@ -226,7 +230,8 @@ namespace DiscothequeW
                     },
                 };
 
-                try {
+                try
+                {
                     foreach (var s in iUsers)
                     {
                         context.User.Add(s);

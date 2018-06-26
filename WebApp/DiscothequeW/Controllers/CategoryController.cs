@@ -93,9 +93,6 @@ namespace DiscothequeW.Controllers
                 this.categoryService.Update(vM);
                 await this.categoryService.Commit();
             }
-
-            //user = Mapper.Map<User, UserViewModel>(_userDb);
-
             return new NoContentResult();
         }
 
@@ -110,20 +107,6 @@ namespace DiscothequeW.Controllers
             }
             else
             {
-                //IEnumerable<Attendee> _attendees = _attendeeRepository.FindBy(a => a.UserId == id);
-                //IEnumerable<Schedule> _schedules = _scheduleRepository.FindBy(s => s.CreatorId == id);
-
-                //foreach (var attendee in _attendees)
-                //{
-                //    _attendeeRepository.Delete(attendee);
-                //}
-
-                //foreach (var schedule in _schedules)
-                //{
-                //    _attendeeRepository.DeleteWhere(a => a.ScheduleId == schedule.Id);
-                //    _scheduleRepository.Delete(schedule);
-                //}
-
                 categoryService.Delete(result);
 
                 await categoryService.Commit();

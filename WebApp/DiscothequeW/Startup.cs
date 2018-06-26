@@ -1,11 +1,7 @@
-using D.Models;
 using D.Models.Interfaces;
-using D.Models.Models;
-using D.Models.Repositories;
 using DiscothequeW.Services;
 using DiscothequeW.Services.Interaces;
 using DiscothequeW.Services.Interfaces;
-using DiscothequeW.ViewModels.Mappings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
@@ -63,14 +59,19 @@ namespace DiscothequeW
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             //services.AddScoped<IUserService, UserService>();
-            //services.AddScoped<IDiscothequeService, DiscothequeService>();
-            //services.AddScoped<ICompanyService, CompanyService>();
+
+            //
 
             services.AddSingleton(provider => Configuration);
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ICompanyService, CompanyService>();
+            services.AddScoped<IDiscothequeService, DiscothequeService>();
+            //services.AddScoped<IDocumentService, DocumentService>();
             services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<IMusicService, MusicService>();
+            services.AddScoped<IUserService, UserService>();
 
             services.AddScoped<IPathProvider, PathProvider>();
-
             // Automapper Configuration
             //AutoMapperConfiguration.Configure();
 

@@ -1,0 +1,77 @@
+﻿<form #f="ngForm" novalidate (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="col-md-4">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" name="Model_Name"
+                   [(ngModel)]="currentModel.Name"
+                   (blur)="CheckModelNameExist()"
+                   #refName="ngModel"
+                   id="Name" required>
+            <div *ngIf="!refName.valid  && (refName.dirty || refName.touched)"
+                 class="alert alert-danger">
+                <div [hidden]="!refName.errors.required">
+                    Model Name is required
+                </div>
+            </div>
+        </div>
+    </div>
+    <input id="C_Id" name="C_Id" [(ngModel)]="currentModel.Id" type="hidden" />
+
+    <div class="row">
+        <div class="col-md-4">
+            <label for="name">Address</label>
+            <input type="text"
+                   class="form-control"
+                   name="Address"
+                   [(ngModel)]="currentModel.Address"
+                   #refAddress="ngModel"
+                   id="Address" required>
+            <div *ngIf="!refAddress.valid  && (refAddress.dirty || refAddress.touched)"
+                 class="alert alert-danger">
+                <div [hidden]="!refAddress.errors.required">
+                    Address is required
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <label for="name">Phone</label>
+            <input type="text"
+                   class="form-control"
+                   name="PhoneNumber"
+                   [(ngModel)]="currentModel.PhoneNumber"
+                   #refPhone="ngModel"
+                   id="PhoneNumber" required>
+            <div *ngIf="!refPhoneNumber.valid  && (refPhoneNumber.dirty || refPhoneNumber.touched)"
+                 class="alert alert-danger">
+                <div [hidden]="!refPhoneNumber.errors.required">
+                    Phone is required
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <label for="name">Email</label>
+            <input type="text" class="form-control" name="Email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                   [(ngModel)]="currentModel.Email"
+                   #refEmail="ngModel"
+                   id="Email" required>
+            <div *ngIf="!refEmail.valid  && (refEmail.dirty || refEmail.touched)"
+                 class="alert alert-danger">
+                <div [hidden]="refEmail.valid || (refEmail.pristine)">
+                    Email is required and format should be <i>saineshwar@bageri.com</i>.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div style="margin-top:10px;" class="col-md-4">
+            <button type="submit" [disabled]="!f.form.valid" class="btn btn-success">Submit</button>
+        </div>
+    </div>
+</form>

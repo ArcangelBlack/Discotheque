@@ -41,7 +41,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\app\components\categories\categories.component.ts" />
+    <None Remove="ClientApp\app\components\categories\Category.Model.ts" />
+    <None Remove="ClientApp\app\components\categories\detailsCategory\detailCategory.component.ts" />
+    <None Remove="ClientApp\app\components\categories\editCategory\editCategory.component.ts" />
+    <None Remove="ClientApp\app\components\categories\newCategory\newCategory.component.ts" />
+    <None Remove="ClientApp\app\components\categories\Services\Category.service.ts" />
+    <None Remove="ClientApp\app\components\companies\companies.component.ts" />
+    <None Remove="ClientApp\app\components\companies\Company.Model.ts" />
+    <None Remove="ClientApp\app\components\discotheques\detailsDiscotheque\detailsDiscotheque.component.ts" />
+    <None Remove="ClientApp\app\components\discotheques\Discotheque.Model.ts" />
     <None Remove="ClientApp\app\components\discotheques\discotheques.component.ts" />
+    <None Remove="ClientApp\app\components\discotheques\editDiscotheque\editDiscotheque.component.ts" />
+    <None Remove="ClientApp\app\components\discotheques\newDiscotheque\newDiscotheque.component.ts" />
+    <None Remove="ClientApp\app\components\discotheques\Services\Discotheque.service.ts" />
     <None Remove="ClientApp\app\components\employees\employees.component.ts" />
     <None Remove="ClientApp\app\components\employees\Services\employee.service.ts" />
     <None Remove="StaticFiles\a.pdf" />
@@ -68,6 +81,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ClientApp\app\components\companies\detailsCompany\" />
+    <Folder Include="ClientApp\app\components\companies\editCompany\" />
+    <Folder Include="ClientApp\app\components\companies\newCompany\" />
+    <Folder Include="ClientApp\app\components\companies\Services\" />
     <Folder Include="Logs\" />
   </ItemGroup>
 
@@ -76,7 +93,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\components\categories\categories.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\categories\Category.Model.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\categories\detailsCategory\detailCategory.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\categories\editCategory\editCategory.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\categories\newCategory\newCategory.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\categories\Services\Category.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\companies\companies.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\companies\Company.Model.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\discotheques\detailsDiscotheque\detailsDiscotheque.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\discotheques\Discotheque.Model.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\discotheques\discotheques.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\discotheques\editDiscotheque\editDiscotheque.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\discotheques\newDiscotheque\newDiscotheque.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\discotheques\Services\Discotheque.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\employees\employees.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\employees\Services\Employee.service.ts" />
   </ItemGroup>
