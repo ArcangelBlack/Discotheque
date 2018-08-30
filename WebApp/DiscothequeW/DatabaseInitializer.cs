@@ -222,7 +222,7 @@ namespace DiscothequeW
                         Email = "as@a.com",
                         City = "Trujillo",
                         PhoneNumber = "213131",
-                        Gender = Gender.Female,
+                        //Gender = Gender.Female,
                         CreatedBy = createdBy,
                         CreatedDate = referenceDate,
                         UpdatedBy = createdBy,

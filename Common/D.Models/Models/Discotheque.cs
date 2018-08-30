@@ -41,8 +41,8 @@ namespace D.Models.Models
         [Required]
         public string Facebook { get; set; }
 
-        public ICollection<DiscothequeDetail> DiscothequeDetails { get; set; }
+        //public ICollection<DiscothequeDetail> DiscothequeDetails { get; set; }
 
-        public Company Company { get; set; }
+        //public Company Company { get; set; }
     }
 }

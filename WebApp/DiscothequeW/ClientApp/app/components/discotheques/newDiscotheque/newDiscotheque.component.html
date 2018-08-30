@@ -1,10 +1,169 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
+﻿<form class="form-horizontal" #f="ngForm" novalidate (ngSubmit)="onSubmit()">
+    <fieldset>
 
-</body>
-</html>
+        <!-- Form Name -->
+        <legend>New Discotheque</legend>
+
+        <!-- Company Id input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="ruc">RUC</label>
+            <div class="col-md-4">
+                <input id="rucinput" name="rucinput" type="text" placeholder="placeholder" class="form-control input-md"
+                       [(ngModel)]="currentModel.CompanyId" #refCompanyId="ngModel" required>
+                <div *ngIf="!refCompanyId.valid  && (refCompanyId.dirty || refCompanyId.touched)"
+                     class="alert alert-danger">
+                    <div [hidden]="!refCompanyId.errors.required">
+                        Company is required
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- File Button -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="filebutton">Search logo</label>
+            <div class="col-md-4">
+                <input id="filebutton" name="filebutton" class="input-file" type="file">
+            </div>
+        </div>
+
+        <!-- Name input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">Name:</label>
+            <div class="col-md-4">
+                <input id="nameinput" name="nameinput" type="text" placeholder="placeholder" class="form-control input-md"
+                       [(ngModel)]="currentModel.Name" #refName="ngModel" required>
+                <div *ngIf="!refName.valid  && (refName.dirty || refName.touched)"
+                     class="alert alert-danger">
+                    <div [hidden]="!refName.errors.required">
+                        Name is required
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Address input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">Address:</label>
+            <div class="col-md-4">
+                <input id="addressinput" name="addressinput" type="text" placeholder="placeholder" class="form-control input-md"
+                       [(ngModel)]="currentModel.Address">
+            </div>
+        </div>
+
+        <!-- City input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">City:</label>
+            <div class="col-md-4">
+                <input id="cityinput" name="cityinput" type="text" placeholder="placeholder" class="form-control input-md"
+                       [(ngModel)]="currentModel.City">
+            </div>
+        </div>
+
+        <!-- Cp input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">CP:</label>
+            <div class="col-md-4">
+                <input id="cpinput" name="cpinput" type="text" placeholder="placeholder" class="form-control input-md"
+                       [(ngModel)]="currentModel.Cp">
+            </div>
+        </div>
+
+        <!-- PhoneNumber input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">Phone Number:</label>
+            <div class="col-md-4">
+                <input id="phoneNumberinput" name="phoneNumberinput" type="text" placeholder="placeholder" class="form-control input-md"
+                       [(ngModel)]="currentModel.PhoneNumber" #refPhoneNumber="ngModel" required>
+                <div *ngIf="!refName.valid  && (refName.dirty || refName.touched)"
+                     class="alert alert-danger">
+                    <div [hidden]="!refName.errors.required">
+                        Phone number is required
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Email input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prependedtext">Email:</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">@</span>
+                    <input id="emailimput" name="emailimput" type="text" class="form-control" placeholder="placeholder"
+                           [(ngModel)]="currentModel.Email" #refEmail="ngModel" required>
+                </div>
+                <div *ngIf="!refEmail.valid  && (refEmail.dirty || refEmail.touched)"
+                     class="alert alert-danger">
+                    <div [hidden]="!refEmail.errors.required">
+                        Email is required
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Web site input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">Website:</label>
+            <div class="col-md-4">
+                <input id="webSiteInput" name="webSiteInput" type="text" placeholder="placeholder" class="form-control input-md"
+                       [(ngModel)]="currentModel.WebSite" #refWebSite="ngModel">
+            </div>
+        </div>
+
+        <!-- Latitud input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">Latitud:</label>
+            <div class="col-md-4">
+                <input id="latitudInput" name="latitudInput" type="text" placeholder="placeholder" class="form-control input-md"
+                       [(ngModel)]="currentModel.Latitud" #refLatitud="ngModel" required>
+                <div *ngIf="!refLatitud.valid  && (refLatitud.dirty || refLatitud.touched)"
+                     class="alert alert-danger">
+                    <div [hidden]="!refLatitud.errors.required">
+                        Latitud is required
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Longitud input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">Longitud:</label>
+            <div class="col-md-4">
+                <input id="longitudInput" name="longitudInput" type="text" placeholder="placeholder" class="form-control input-md"
+                       [(ngModel)]="currentModel.Longitud" #refLongitud="ngModel" required>
+                <div *ngIf="!refLongitud.valid  && (refLongitud.dirty || refLongitud.touched)"
+                     class="alert alert-danger">
+                    <div [hidden]="!refLongitud.errors.required">
+                        Longitud is required
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">Status:</label>
+            <div class="col-md-4">
+                <input id="statusInput" name="statusInput" type="text" placeholder="placeholder" class="form-control input-md"
+                       [(ngModel)]="currentModel.Status" #refStatus="ngModel">
+            </div>
+        </div>
+
+        <!-- Facebook input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">Facebook:</label>
+            <div class="col-md-4">
+                <input id="facebookInput" name="facebookInput" type="text" placeholder="placeholder" class="form-control input-md"
+                       [(ngModel)]="currentModel.Facebook" #refFacebook="ngModel">
+            </div>
+        </div>
+
+        <div class="row">
+            <div style="margin-top:10px;" class="col-md-4">
+                <button type="submit" [disabled]="!f.form.valid" class="btn btn-success">Submit</button>
+            </div>
+        </div>
+
+    </fieldset>
+</form>

@@ -1,10 +1,25 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
+﻿<form #f="ngForm" novalidate (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="col-md-4">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" name="Model_Description"
+                   [(ngModel)]="currentModel.Description"
+                   (blur)="CheckModelNameExist()"
+                   #refName="ngModel"
+                   id="Description" required>
+            <div *ngIf="!refDescription.valid  && (refDescription.dirty || refDescription.touched)"
+                 class="alert alert-danger">
+                <div [hidden]="!refDescription.errors.required">
+                    Model Description is required
+                </div>
+            </div>
+        </div>
+    </div>
+    <input id="C_Id" name="C_Id" [(ngModel)]="currentModel.Id" type="hidden" />
 
-</body>
-</html>
+    <div class="row">
+        <div style="margin-top:10px;" class="col-md-4">
+            <button type="submit" [disabled]="!f.form.valid" class="btn btn-success">Submit</button>
+        </div>
+    </div>
+</form>

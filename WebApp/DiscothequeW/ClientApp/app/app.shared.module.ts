@@ -84,7 +84,7 @@ import { downloadDocumentComponent } from './components/documents/downloadDocume
 
             { path: 'categories', component: categoriesComponent },
             { path: 'categories/edit/:Id', component: editCategoryComponent },
-            { path: 'discotheques/details/:Id', component: detailsCategoryComponent },
+            { path: 'categories/details/:Id', component: detailsCategoryComponent },
             { path: 'categories/new', component: newCategoryComponent },
 
             { path: 'companies', component: companiesComponent },

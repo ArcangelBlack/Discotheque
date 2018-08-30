@@ -24,14 +24,16 @@ namespace D.Models.Models
 
         public string Address { get; set; }
 
-        public string Phone { get; set; }
+        public string PhoneNumber { get; set; }
 
         public string Email { get; set; }
 
-        [Required]
-        public Gender Gender { get; set; }
+        //[Required]
+        public int Gender { get; set; }
         
         public Rol Rol { get; set; }
+
+        public int Status { get; set; }
 
     }
 }

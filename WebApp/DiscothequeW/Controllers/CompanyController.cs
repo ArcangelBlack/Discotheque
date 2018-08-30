@@ -40,7 +40,7 @@ namespace DiscothequeW.Controllers
             return Json(result);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetCompany")]
         public async Task<IActionResult> Get(int id)
         {
             var result = await this.companyService.GetSingle(id);
@@ -64,6 +64,12 @@ namespace DiscothequeW.Controllers
                 return BadRequest(ModelState);
             }
 
+            var dateTime = System.DateTime.Now;
+
+            vM.CreatedBy = "Obtener Usuario Actual";
+            vM.CreatedDate = dateTime;
+            vM.UpdatedDate = dateTime;
+
             //User _newUser = new User { Name = user.Name, Profession = user.Profession, Avatar = user.Avatar };
 
             this.companyService.Add(vM);
@@ -71,7 +77,7 @@ namespace DiscothequeW.Controllers
 
             //user = Mapper.Map<User, UserViewModel>(_newUser);
 
-            CreatedAtRouteResult result = CreatedAtRoute("GetEmployee", new { controller = "Employee", id = vM.Id }, vM);
+            CreatedAtRouteResult result = CreatedAtRoute("GetCompany", new { controller = "Company", id = vM.Id }, vM);
             return result;
         }
 
@@ -91,7 +97,7 @@ namespace DiscothequeW.Controllers
             }
             else
             {
-                this.companyService.Update(vM);
+                this.companyService.Update(result);
                 await this.companyService.Commit();
             }
 
@@ -111,20 +117,6 @@ namespace DiscothequeW.Controllers
             }
             else
             {
-                //IEnumerable<Attendee> _attendees = _attendeeRepository.FindBy(a => a.UserId == id);
-                //IEnumerable<Schedule> _schedules = _scheduleRepository.FindBy(s => s.CreatorId == id);
-
-                //foreach (var attendee in _attendees)
-                //{
-                //    _attendeeRepository.Delete(attendee);
-                //}
-
-                //foreach (var schedule in _schedules)
-                //{
-                //    _attendeeRepository.DeleteWhere(a => a.ScheduleId == schedule.Id);
-                //    _scheduleRepository.Delete(schedule);
-                //}
-
                 companyService.Delete(result);
 
                 await companyService.Commit();

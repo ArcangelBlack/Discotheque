@@ -32,8 +32,12 @@ namespace D.Models.Models
         public string City { get; set; }
 
         [Required]
-        public Gender Gender { get; set; }
+        public int Gender { get; set; }
 
         public Rol Rol { get; set; }
+
+        public int Status { get; set; }
+
+        public int Age { get; set; }
     }
 }

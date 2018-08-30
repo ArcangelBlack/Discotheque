@@ -29,7 +29,7 @@ export class UserService {
     }
 
     public addUser(currentmodel: UserModel) {
-        this.actionPostUrl = this.baseUrl + this.actionPostUrl;
+        this.actionPostUrl = this.baseUrl + this.actionUrl;
         return this.http.post(this.actionPostUrl, currentmodel).map((response: Response) => response.json()).catch(response => {
             if (response.status == 401) {
                 console.error(response);
@@ -39,7 +39,7 @@ export class UserService {
     }
 
     public editUser(userId: string) {
-        this.actionGetUrl = this.baseUrl + this.actionGetUrl + userId;
+        this.actionGetUrl = this.baseUrl + this.actionUrl + userId;
         return this.http.get(this.actionGetUrl).map((response: Response) => response.json()).catch(response => {
             if (response.status == 401) {
                 console.error(response);

@@ -40,7 +40,7 @@ namespace DiscothequeW.Controllers
             return Json(result);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetEmployee")]
         public async Task<IActionResult> Get(int id)
         {
             var result = await this.employeeService.GetSingle(id);
@@ -67,6 +67,13 @@ namespace DiscothequeW.Controllers
 
             //User _newUser = new User { Name = user.Name, Profession = user.Profession, Avatar = user.Avatar };
 
+            var dateTime = System.DateTime.Now;
+
+            vM.BirthDate = dateTime;
+            vM.CreatedBy = "Obtener Usuario Actual";
+            vM.CreatedDate = dateTime;
+            vM.UpdatedDate = dateTime;
+
             this.employeeService.Add(vM);
             await this.employeeService.Commit();
 
@@ -92,7 +99,10 @@ namespace DiscothequeW.Controllers
             }
             else
             {
-                this.employeeService.Update(vM);
+                result.Address = vM.Address;
+                result.UpdatedDate = System.DateTime.Now;
+
+                this.employeeService.Update(result);
                 await this.employeeService.Commit();
             }
 

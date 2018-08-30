@@ -11,17 +11,13 @@ import { Router, ActivatedRoute } from '@angular/router'
 export class newEmployeeComponent {
 
     currentModel: EmployeeModel = new EmployeeModel();
-    submitted: boolean = false;
-    status: boolean | undefined;
-    private username: string = "";
+    ID: string | undefined;
     private data: any;
 
-    constructor(private employeeService: EmployeeService, private route: Router) {
-
-    }
+    constructor(private employeeService: EmployeeService, private route: Router, private _routeParams: ActivatedRoute) {    }
 
     onSumit() {
-
+        alert("Yhi");
         var formdata = this.currentModel;
         this.employeeService.addEmployee(formdata).subscribe(data => {
             if (data == true) {

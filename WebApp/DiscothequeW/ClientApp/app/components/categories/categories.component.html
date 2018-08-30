@@ -35,7 +35,7 @@
                     </td>
                     <td>
 
-                        <a [routerLink]="['details/',empData.Id]"
+                        <a [routerLink]="['details',empData.Id]"
                            class="btn btn-primary">
                             Detail
                         </a>
@@ -43,7 +43,8 @@
                            class="btn btn-success">
                             Edit
                         </a>
-                        <a class="btn btn-danger">
+                        <a [routerLink]="['edit',empData.Id]"
+                           class="btn btn-danger">
                             Delete
                         </a>
                     </td>

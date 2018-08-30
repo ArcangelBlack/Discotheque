@@ -10,26 +10,32 @@
             <a class='navbar-brand' [routerLink]="['/home']">Test Angular  + Asp.Net Core</a>
         </div>
         <div class='clearfix'></div>
-        <div class='navbar-collapse collapse'>
+        <div style="height:500px; overflow-y: scroll;">
+            <!--class='navbar-collapse collapse'-->
             <ul class='nav navbar-nav'>
                 <li [routerLinkActive]="['link-active']">
                     <a [routerLink]="['/home']">
                         <span class='glyphicon glyphicon-home'></span> Home
                     </a>
                 </li>
-                <li [routerLinkActive]="['link-active']">
+                <!--<li [routerLinkActive]="['link-active']">
                     <a [routerLink]="['/counter']">
                         <span class='glyphicon glyphicon-education'></span> Counter
                     </a>
-                </li>
-                <li [routerLinkActive]="['link-active']">
+                </li>-->
+                <!--<li [routerLinkActive]="['link-active']">
                     <a [routerLink]="['/fetch-data']">
                         <span class='glyphicon glyphicon-th-list'></span> Fetch data
                     </a>
-                </li>
+                </li>-->
                 <li [routerLinkActive]="['link-active']">
                     <a [routerLink]="['/categories']">
-                        <span class='glyphicon glyphicon-user'></span> Categories
+                        <span class='glyphicon glyphicon-education'></span> Categories
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/categories/new']">
+                        <span class='glyphicon glyphicon-user'></span> New Category
                     </a>
                 </li>
                 <li [routerLinkActive]="['link-active']">
@@ -38,23 +44,63 @@
                     </a>
                 </li>
                 <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/companies/new']">
+                        <span class='glyphicon glyphicon-user'></span> New Company
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
                     <a [routerLink]="['/discotheques']">
                         <span class='glyphicon glyphicon-user'></span> Discotheques
                     </a>
                 </li>
                 <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/discotheques/new']">
+                        <span class='glyphicon glyphicon-user'></span> New Discothec
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/events']">
+                        <span class='glyphicon glyphicon-user'></span> Events
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/events/new']">
+                        <span class='glyphicon glyphicon-user'></span> New Event
+                    </a>
+                </li>
+                <!--<li [routerLinkActive]="['link-active']">
                     <a [routerLink]="['/download']">
                         <span class='glyphicon glyphicon-user'></span> Download Documents
                     </a>
-                </li>
+                </li>-->
                 <li [routerLinkActive]="['link-active']">
                     <a [routerLink]="['/employees']">
                         <span class='glyphicon glyphicon-user'></span> Employees
                     </a>
                 </li>
                 <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/employees/new']">
+                        <span class='glyphicon glyphicon-user'></span> New Employe
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
                     <a [routerLink]="['/users']">
                         <span class='glyphicon glyphicon-user'></span> Users
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/users/new']">
+                        <span class='glyphicon glyphicon-user'></span> New User
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/music']">
+                        <span class='glyphicon glyphicon-user'></span> Music
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/favority']">
+                        <span class='glyphicon glyphicon-user'></span> Favority
                     </a>
                 </li>
             </ul>

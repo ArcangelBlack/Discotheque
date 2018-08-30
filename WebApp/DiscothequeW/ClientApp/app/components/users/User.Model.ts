@@ -17,4 +17,9 @@
     public City: string | undefined;
 
     public Gender: string | undefined;
+
+    public Status: string | undefined;
+
+    public Age: number | undefined;
+
 }

@@ -40,7 +40,7 @@ namespace DiscothequeW.Controllers
             return Json(result);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetUser")]
         public async Task<IActionResult> Get(int id)
         {
             var result = await this.userService.GetSingle(id);
@@ -59,7 +59,6 @@ namespace DiscothequeW.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody]User vM)
         {
-
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -67,12 +66,18 @@ namespace DiscothequeW.Controllers
 
             //User _newUser = new User { Name = user.Name, Profession = user.Profession, Avatar = user.Avatar };
 
+            var dateTime = System.DateTime.Now;
+
+            vM.CreatedBy = "Obtener Usuario Actual";
+            vM.CreatedDate = dateTime;
+            vM.UpdatedDate = dateTime;
+
             this.userService.Add(vM);
             await this.userService.Commit();
 
             //user = Mapper.Map<User, UserViewModel>(_newUser);
 
-            CreatedAtRouteResult result = CreatedAtRoute("GetEmployee", new { controller = "Employee", id = vM.Id }, vM);
+            CreatedAtRouteResult result = CreatedAtRoute("GetUser", new { controller = "Employee", id = vM.Id }, vM);
             return result;
         }
 
@@ -92,7 +97,10 @@ namespace DiscothequeW.Controllers
             }
             else
             {
-                this.userService.Update(vM);
+                result.Address = vM.Address;
+                result.UpdatedDate = System.DateTime.Now;
+
+                this.userService.Update(result);
                 await this.userService.Commit();
             }
 

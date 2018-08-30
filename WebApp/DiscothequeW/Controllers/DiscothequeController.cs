@@ -96,7 +96,10 @@ namespace DiscothequeW.Controllers
                 return BadRequest(ModelState);
             }
 
-            //User _newUser = new User { Name = user.Name, Profession = user.Profession, Avatar = user.Avatar };
+            var dateTime = System.DateTime.Now;
+            vM.CreatedBy = "Obtener Usuario Actual";
+            vM.CreatedDate = dateTime;
+            vM.UpdatedDate = dateTime;
 
             this.discothequeService.Add(vM);
             await this.discothequeService.Commit();
@@ -110,26 +113,34 @@ namespace DiscothequeW.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody]Discotheque vM)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest(ModelState);
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                var result = await this.discothequeService.GetSingle(id);
+
+                if (result == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    result.WebSite = vM.WebSite;
+                    result.UpdatedDate = System.DateTime.Now;
+
+                    this.discothequeService.Update(result);
+                    await this.discothequeService.Commit();
+                }
+                return new NoContentResult();
             }
-
-            var result = await this.discothequeService.GetSingle(id);
-
-            if (result == null)
+            catch(Exception ex)
             {
-                return NotFound();
+                Console.WriteLine(ex);
+                return new NoContentResult();
             }
-            else
-            {
-                this.discothequeService.Update(vM);
-                await this.discothequeService.Commit();
-            }
-
-            //user = Mapper.Map<User, UserViewModel>(_userDb);
-
-            return new NoContentResult();
         }
 
         [HttpDelete("{id}")]
@@ -143,20 +154,6 @@ namespace DiscothequeW.Controllers
             }
             else
             {
-                //IEnumerable<Attendee> _attendees = _attendeeRepository.FindBy(a => a.UserId == id);
-                //IEnumerable<Schedule> _schedules = _scheduleRepository.FindBy(s => s.CreatorId == id);
-
-                //foreach (var attendee in _attendees)
-                //{
-                //    _attendeeRepository.Delete(attendee);
-                //}
-
-                //foreach (var schedule in _schedules)
-                //{
-                //    _attendeeRepository.DeleteWhere(a => a.ScheduleId == schedule.Id);
-                //    _scheduleRepository.Delete(schedule);
-                //}
-
                 this.discothequeService.Delete(result);
 
                 await this.discothequeService.Commit();

@@ -40,7 +40,7 @@ namespace DiscothequeW.Controllers
             return Json(result);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetCategory")]
         public async Task<IActionResult> Get(int id)
         {
             var result = await this.categoryService.GetSingle(id);
@@ -65,14 +65,18 @@ namespace DiscothequeW.Controllers
                 return BadRequest(ModelState);
             }
 
-            //User _newUser = new User { Name = user.Name, Profession = user.Profession, Avatar = user.Avatar };
+            var dateTime = System.DateTime.Now;
+
+            vM.CreatedBy = "Obtener Usuario Actual";
+            vM.CreatedDate = dateTime;
+            vM.UpdatedDate = dateTime;            
 
             this.categoryService.Add(vM);
             await this.categoryService.Commit();
 
             //user = Mapper.Map<User, UserViewModel>(_newUser);
 
-            CreatedAtRouteResult result = CreatedAtRoute("GetEmployee", new { controller = "Employee", id = vM.Id }, vM);
+            CreatedAtRouteResult result = CreatedAtRoute("GetCategory", new { controller = "Category", id = vM.Id }, vM);
             return result;
         }
 
@@ -92,7 +96,8 @@ namespace DiscothequeW.Controllers
             }
             else
             {
-                this.categoryService.Update(vM);
+                result.Description = vM.Description;
+                result.UpdatedDate = System.DateTime.Now;
                 await this.categoryService.Commit();
             }
             return new NoContentResult();
