@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using D.Models.Models;
@@ -29,15 +30,23 @@ namespace DiscothequeW.Controllers
         [HttpGet("[action]")]
         public async Task<IActionResult> GetAll()
         {
-            var result = new List<Employee>();
-
-            var resultService = await this.employeeService.GetAll();
-            var enumerable = resultService.ToList();
-            if (enumerable.Any())
+            try
             {
-                result = enumerable;
+                var result = new List<Employee>();
+
+                var resultService = await this.employeeService.GetAll();
+                var enumerable = resultService.ToList();
+                if (enumerable.Any())
+                {
+                    result = enumerable;
+                }
+                return Json(result);
             }
-            return Json(result);
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                return NotFound();
+            }
         }
 
         [HttpGet("{id}", Name = "GetEmployee")]
