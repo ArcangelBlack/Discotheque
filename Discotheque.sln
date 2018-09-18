@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MobileApp", "MobileApp", "{6F05507A-A76A-4782-A059-234A31FD6503}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04.Movile", "04.Movile", "{6F05507A-A76A-4782-A059-234A31FD6503}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApp", "WebApp", "{9E50C32E-8A23-4203-99A5-20F90CA58474}"
 EndProject
@@ -15,9 +15,40 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01.Common", "01.Common", "{
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DiscothequeDb", "Kernel\DiscothequeDatabase\DiscothequeDb.sqlproj", "{CF555B9C-15AE-4094-874C-FA5388949871}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D.Services", "Common\D.Services\D.Services.csproj", "{5D7DFB82-7FD8-476F-A918-D8F83E32DF26}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.BackEnd", "02.BackEnd", "{0B42FCD3-B693-462F-8718-6751264DFF6E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "D.Models", "Common\D.Models\D.Models.csproj", "{D3EB5326-545B-49D4-B022-77F0F551B3F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discotheque.Api.Tests", "Discotheque.Api.Tests\Discotheque.Api.Tests.csproj", "{25A3D326-8303-4709-A2E8-072ED095B170}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "99.Test", "99.Test", "{C73887EA-9E6E-47B8-B44F-31BF31A51951}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.FrontEnd", "03.FrontEnd", "{46B1F3A1-4FBF-4131-BA4F-75FC5C0F703F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discotheque.Api", "BackEnd\Discotheque.Api\Discotheque.Api.csproj", "{396AA466-54F9-47EE-AF14-8C2DD3EC4E63}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainServices", "Common\DomainServices\DomainServices.csproj", "{2CB4E44A-5307-4EDD-9DA6-395271591EEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainModels", "Common\DomainModels\DomainModels.csproj", "{1414F6FA-20FB-4C53-B470-9D6269668510}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Discotheque.Front.A", "Front\Discotheque.Front.A\", "{0D428590-90CF-4D39-9BDC-2B9842D91A40}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_60285"
+		Debug.AspNetCompiler.PhysicalPath = "Front\Discotheque.Front.A\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_60285\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_60285"
+		Release.AspNetCompiler.PhysicalPath = "Front\Discotheque.Front.A\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_60285\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "60285"
+		SlnRelativePath = "Front\Discotheque.Front.A\"
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,14 +66,26 @@ Global
 		{CF555B9C-15AE-4094-874C-FA5388949871}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF555B9C-15AE-4094-874C-FA5388949871}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CF555B9C-15AE-4094-874C-FA5388949871}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{5D7DFB82-7FD8-476F-A918-D8F83E32DF26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5D7DFB82-7FD8-476F-A918-D8F83E32DF26}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5D7DFB82-7FD8-476F-A918-D8F83E32DF26}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5D7DFB82-7FD8-476F-A918-D8F83E32DF26}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D3EB5326-545B-49D4-B022-77F0F551B3F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D3EB5326-545B-49D4-B022-77F0F551B3F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D3EB5326-545B-49D4-B022-77F0F551B3F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D3EB5326-545B-49D4-B022-77F0F551B3F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25A3D326-8303-4709-A2E8-072ED095B170}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25A3D326-8303-4709-A2E8-072ED095B170}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25A3D326-8303-4709-A2E8-072ED095B170}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25A3D326-8303-4709-A2E8-072ED095B170}.Release|Any CPU.Build.0 = Release|Any CPU
+		{396AA466-54F9-47EE-AF14-8C2DD3EC4E63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{396AA466-54F9-47EE-AF14-8C2DD3EC4E63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{396AA466-54F9-47EE-AF14-8C2DD3EC4E63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{396AA466-54F9-47EE-AF14-8C2DD3EC4E63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CB4E44A-5307-4EDD-9DA6-395271591EEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CB4E44A-5307-4EDD-9DA6-395271591EEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CB4E44A-5307-4EDD-9DA6-395271591EEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CB4E44A-5307-4EDD-9DA6-395271591EEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1414F6FA-20FB-4C53-B470-9D6269668510}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1414F6FA-20FB-4C53-B470-9D6269668510}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1414F6FA-20FB-4C53-B470-9D6269668510}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1414F6FA-20FB-4C53-B470-9D6269668510}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D428590-90CF-4D39-9BDC-2B9842D91A40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D428590-90CF-4D39-9BDC-2B9842D91A40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D428590-90CF-4D39-9BDC-2B9842D91A40}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D428590-90CF-4D39-9BDC-2B9842D91A40}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,8 +93,11 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{3524A79C-2734-4605-848D-7CCBAAC9C6C7} = {9E50C32E-8A23-4203-99A5-20F90CA58474}
 		{CF555B9C-15AE-4094-874C-FA5388949871} = {4878AD12-394A-43C3-B24F-9ACE204AA3E8}
-		{5D7DFB82-7FD8-476F-A918-D8F83E32DF26} = {1479BA51-08B0-4575-B605-98212768731E}
-		{D3EB5326-545B-49D4-B022-77F0F551B3F3} = {1479BA51-08B0-4575-B605-98212768731E}
+		{25A3D326-8303-4709-A2E8-072ED095B170} = {C73887EA-9E6E-47B8-B44F-31BF31A51951}
+		{396AA466-54F9-47EE-AF14-8C2DD3EC4E63} = {0B42FCD3-B693-462F-8718-6751264DFF6E}
+		{2CB4E44A-5307-4EDD-9DA6-395271591EEA} = {1479BA51-08B0-4575-B605-98212768731E}
+		{1414F6FA-20FB-4C53-B470-9D6269668510} = {1479BA51-08B0-4575-B605-98212768731E}
+		{0D428590-90CF-4D39-9BDC-2B9842D91A40} = {46B1F3A1-4FBF-4131-BA4F-75FC5C0F703F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {813D6FC5-B813-47CC-9543-AF68E4EF330A}

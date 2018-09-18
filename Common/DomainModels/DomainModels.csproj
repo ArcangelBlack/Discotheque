@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1414F6FA-20FB-4C53-B470-9D6269668510}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DomainModels</RootNamespace>
+    <AssemblyName>DomainModels</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Enums\Gender.cs" />
+    <Compile Include="GoogleModel\Class1.cs" />
+    <Compile Include="GoogleModel\ContextModel.cs" />
+    <Compile Include="GoogleModel\FacetModel.cs" />
+    <Compile Include="GoogleModel\GoogleSearchResponseModel.cs" />
+    <Compile Include="GoogleModel\ItemModel.cs" />
+    <Compile Include="GoogleModel\MetatagModel.cs" />
+    <Compile Include="GoogleModel\PagemapModel.cs" />
+    <Compile Include="GoogleModel\PageModel.cs" />
+    <Compile Include="GoogleModel\QueriesModel.cs" />
+    <Compile Include="GoogleModel\UrlModel.cs" />
+    <Compile Include="Model\AppCompanie.cs">
+      <DependentUpon>DiscothequeDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AppDiscotheque.cs">
+      <DependentUpon>DiscothequeDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AppDiscothequeCategorie.cs">
+      <DependentUpon>DiscothequeDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AppDiscothequeDetail.cs">
+      <DependentUpon>DiscothequeDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AppEmployee.cs">
+      <DependentUpon>DiscothequeDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AppMusic.cs">
+      <DependentUpon>DiscothequeDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AppMusicDetail.cs">
+      <DependentUpon>DiscothequeDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AppRol.cs">
+      <DependentUpon>DiscothequeDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AppUser.cs">
+      <DependentUpon>DiscothequeDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DiscothequeDb.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DiscothequeDb.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DiscothequeDb.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DiscothequeDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DiscothequeDb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DiscothequeDb.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Interfaces\IEntityBaseRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IRepository.cs" />
+    <Compile Include="Repositories\Repository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AccountModel\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Model\DiscothequeDb.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DiscothequeDb.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="Model\DiscothequeDb.edmx.diagram">
+      <DependentUpon>DiscothequeDb.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\DiscothequeDb.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DiscothequeDb.Context.cs</LastGenOutput>
+      <DependentUpon>DiscothequeDb.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model\DiscothequeDb.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DiscothequeDb.edmx</DependentUpon>
+      <LastGenOutput>DiscothequeDb.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -25,13 +25,19 @@
 
   <ItemGroup>
     <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
+    <Compile Remove="ClientApp\app\components\dashboard\**" />
     <Compile Remove="ClientApp\app\components\login\**" />
+    <Compile Remove="ClientApp\DiscothequeFront\**" />
     <Compile Remove="Core\**" />
     <Content Remove="ClientApp\**" />
     <Content Remove="Core\**" />
+    <EmbeddedResource Remove="ClientApp\app\components\dashboard\**" />
     <EmbeddedResource Remove="ClientApp\app\components\login\**" />
+    <EmbeddedResource Remove="ClientApp\DiscothequeFront\**" />
     <EmbeddedResource Remove="Core\**" />
+    <None Remove="ClientApp\app\components\dashboard\**" />
     <None Remove="ClientApp\app\components\login\**" />
+    <None Remove="ClientApp\DiscothequeFront\**" />
     <None Remove="Core\**" />
   </ItemGroup>
 
@@ -93,10 +99,6 @@
   <ItemGroup>
     <Folder Include="ClientApp\app\components\musics\" />
     <Folder Include="Logs\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\Common\D.Models\D.Models.csproj" />
   </ItemGroup>
 
   <ItemGroup>
