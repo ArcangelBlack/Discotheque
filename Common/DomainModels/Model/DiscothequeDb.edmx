@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DiscothequeDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DiscothequeDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AppCompanie">
           <Key>
             <PropertyRef Name="Id" />
@@ -139,7 +139,7 @@
           <Property Name="Status" Type="int" Nullable="false" />
           <Property Name="Age" Type="int" />
         </EntityType>
-        <Association Name="FK_AppDiscotheque_AppCompanie_CompanyId">
+        <Association Name="FK_AppDiscotheque_AppCompany">
           <End Role="AppCompanie" Type="Self.AppCompanie" Multiplicity="1" />
           <End Role="AppDiscotheque" Type="Self.AppDiscotheque" Multiplicity="*" />
           <ReferentialConstraint>
@@ -148,18 +148,6 @@
             </Principal>
             <Dependent Role="AppDiscotheque">
               <PropertyRef Name="CompanyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AppDiscothequeDetail_AppDiscotheque_DiscothequeId">
-          <End Role="AppDiscotheque" Type="Self.AppDiscotheque" Multiplicity="1" />
-          <End Role="AppDiscothequeDetail" Type="Self.AppDiscothequeDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AppDiscotheque">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AppDiscothequeDetail">
-              <PropertyRef Name="DiscothequeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -196,18 +184,6 @@
             </Principal>
             <Dependent Role="AppMusic">
               <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AppMusicDetail_AppDiscotheque_DiscothequeId">
-          <End Role="AppDiscotheque" Type="Self.AppDiscotheque" Multiplicity="1" />
-          <End Role="AppMusicDetail" Type="Self.AppMusicDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AppDiscotheque">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AppMusicDetail">
-              <PropertyRef Name="DiscothequeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -233,13 +209,9 @@
           <EntitySet Name="AppMusicDetail" EntityType="Self.AppMusicDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AppRol" EntityType="Self.AppRol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AppUser" EntityType="Self.AppUser" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_AppDiscotheque_AppCompanie_CompanyId" Association="Self.FK_AppDiscotheque_AppCompanie_CompanyId">
+          <AssociationSet Name="FK_AppDiscotheque_AppCompany" Association="Self.FK_AppDiscotheque_AppCompany">
             <End Role="AppCompanie" EntitySet="AppCompanie" />
             <End Role="AppDiscotheque" EntitySet="AppDiscotheque" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AppDiscothequeDetail_AppDiscotheque_DiscothequeId" Association="Self.FK_AppDiscothequeDetail_AppDiscotheque_DiscothequeId">
-            <End Role="AppDiscotheque" EntitySet="AppDiscotheque" />
-            <End Role="AppDiscothequeDetail" EntitySet="AppDiscothequeDetail" />
           </AssociationSet>
           <AssociationSet Name="FK_AppDiscothequeDetail_AppDiscothequeCategorie_DiscothequeCategoryId" Association="Self.FK_AppDiscothequeDetail_AppDiscothequeCategorie_DiscothequeCategoryId">
             <End Role="AppDiscothequeCategorie" EntitySet="AppDiscothequeCategorie" />
@@ -253,44 +225,70 @@
             <End Role="AppUser" EntitySet="AppUser" />
             <End Role="AppMusic" EntitySet="AppMusic" />
           </AssociationSet>
-          <AssociationSet Name="FK_AppMusicDetail_AppDiscotheque_DiscothequeId" Association="Self.FK_AppMusicDetail_AppDiscotheque_DiscothequeId">
-            <End Role="AppDiscotheque" EntitySet="AppDiscotheque" />
-            <End Role="AppMusicDetail" EntitySet="AppMusicDetail" />
-          </AssociationSet>
           <AssociationSet Name="FK_AppMusicDetail_AppMusic_MusicId" Association="Self.FK_AppMusicDetail_AppMusic_MusicId">
             <End Role="AppMusic" EntitySet="AppMusic" />
             <End Role="AppMusicDetail" EntitySet="AppMusicDetail" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DiscothequeDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DiscothequeDbEntities" annotation:LazyLoadingEnabled="false">
+          <EntitySet Name="AppCompanie" EntityType="DiscothequeDbModel.AppCompanie" />
+          <EntitySet Name="AppDiscotheque" EntityType="DiscothequeDbModel.AppDiscotheque" />
+          <EntitySet Name="AppDiscothequeCategorie" EntityType="DiscothequeDbModel.AppDiscothequeCategorie" />
+          <EntitySet Name="AppDiscothequeDetail" EntityType="DiscothequeDbModel.AppDiscothequeDetail" />
+          <EntitySet Name="AppEmployee" EntityType="DiscothequeDbModel.AppEmployee" />
+          <EntitySet Name="AppMusic" EntityType="DiscothequeDbModel.AppMusic" />
+          <EntitySet Name="AppMusicDetail" EntityType="DiscothequeDbModel.AppMusicDetail" />
+          <EntitySet Name="AppRol" EntityType="DiscothequeDbModel.AppRol" />
+          <EntitySet Name="AppUser" EntityType="DiscothequeDbModel.AppUser" />
+          <AssociationSet Name="FK_AppDiscotheque_AppCompany" Association="DiscothequeDbModel.FK_AppDiscotheque_AppCompany">
+            <End Role="AppCompanie" EntitySet="AppCompanie" />
+            <End Role="AppDiscotheque" EntitySet="AppDiscotheque" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppDiscothequeDetail_AppDiscothequeCategorie_DiscothequeCategoryId" Association="DiscothequeDbModel.FK_AppDiscothequeDetail_AppDiscothequeCategorie_DiscothequeCategoryId">
+            <End Role="AppDiscothequeCategorie" EntitySet="AppDiscothequeCategorie" />
+            <End Role="AppDiscothequeDetail" EntitySet="AppDiscothequeDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppEmployee_AppRol_RolId" Association="DiscothequeDbModel.FK_AppEmployee_AppRol_RolId">
+            <End Role="AppRol" EntitySet="AppRol" />
+            <End Role="AppEmployee" EntitySet="AppEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppMusic_AppUser_UserId" Association="DiscothequeDbModel.FK_AppMusic_AppUser_UserId">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="AppMusic" EntitySet="AppMusic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppMusicDetail_AppMusic_MusicId" Association="DiscothequeDbModel.FK_AppMusicDetail_AppMusic_MusicId">
+            <End Role="AppMusic" EntitySet="AppMusic" />
+            <End Role="AppMusicDetail" EntitySet="AppMusicDetail" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="AppCompanie">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CreatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Ruc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Ruc" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <NavigationProperty Name="AppDiscotheques" Relationship="Self.FK_AppDiscotheque_AppCompanie_CompanyId" FromRole="AppCompanie" ToRole="AppDiscotheque" />
+          <NavigationProperty Name="AppDiscotheque" Relationship="DiscothequeDbModel.FK_AppDiscotheque_AppCompany" FromRole="AppCompanie" ToRole="AppDiscotheque" />
         </EntityType>
         <EntityType Name="AppDiscotheque">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CompanyId" Type="Int32" Nullable="false" />
           <Property Name="Cp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CreatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
@@ -300,15 +298,13 @@
           <Property Name="Latitud" Type="Double" Nullable="false" />
           <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Longitud" Type="Double" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="Int32" Nullable="false" />
           <Property Name="UpdatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="WebSite" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AppCompanie" Relationship="Self.FK_AppDiscotheque_AppCompanie_CompanyId" FromRole="AppDiscotheque" ToRole="AppCompanie" />
-          <NavigationProperty Name="AppDiscothequeDetails" Relationship="Self.FK_AppDiscothequeDetail_AppDiscotheque_DiscothequeId" FromRole="AppDiscotheque" ToRole="AppDiscothequeDetail" />
-          <NavigationProperty Name="AppMusicDetails" Relationship="Self.FK_AppMusicDetail_AppDiscotheque_DiscothequeId" FromRole="AppDiscotheque" ToRole="AppMusicDetail" />
+          <NavigationProperty Name="AppCompanie" Relationship="DiscothequeDbModel.FK_AppDiscotheque_AppCompany" FromRole="AppDiscotheque" ToRole="AppCompanie" />
         </EntityType>
         <EntityType Name="AppDiscothequeCategorie">
           <Key>
@@ -320,7 +316,7 @@
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <NavigationProperty Name="AppDiscothequeDetails" Relationship="Self.FK_AppDiscothequeDetail_AppDiscothequeCategorie_DiscothequeCategoryId" FromRole="AppDiscothequeCategorie" ToRole="AppDiscothequeDetail" />
+          <NavigationProperty Name="AppDiscothequeDetail" Relationship="DiscothequeDbModel.FK_AppDiscothequeDetail_AppDiscothequeCategorie_DiscothequeCategoryId" FromRole="AppDiscothequeCategorie" ToRole="AppDiscothequeDetail" />
         </EntityType>
         <EntityType Name="AppDiscothequeDetail">
           <Key>
@@ -329,8 +325,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DiscothequeCategoryId" Type="Int32" Nullable="false" />
           <Property Name="DiscothequeId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="AppDiscotheque" Relationship="Self.FK_AppDiscothequeDetail_AppDiscotheque_DiscothequeId" FromRole="AppDiscothequeDetail" ToRole="AppDiscotheque" />
-          <NavigationProperty Name="AppDiscothequeCategorie" Relationship="Self.FK_AppDiscothequeDetail_AppDiscothequeCategorie_DiscothequeCategoryId" FromRole="AppDiscothequeDetail" ToRole="AppDiscothequeCategorie" />
+          <NavigationProperty Name="AppDiscothequeCategorie" Relationship="DiscothequeDbModel.FK_AppDiscothequeDetail_AppDiscothequeCategorie_DiscothequeCategoryId" FromRole="AppDiscothequeDetail" ToRole="AppDiscothequeCategorie" />
         </EntityType>
         <EntityType Name="AppEmployee">
           <Key>
@@ -351,7 +346,7 @@
           <Property Name="UpdatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="Status" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="AppRol" Relationship="Self.FK_AppEmployee_AppRol_RolId" FromRole="AppEmployee" ToRole="AppRol" />
+          <NavigationProperty Name="AppRol" Relationship="DiscothequeDbModel.FK_AppEmployee_AppRol_RolId" FromRole="AppEmployee" ToRole="AppRol" />
         </EntityType>
         <EntityType Name="AppMusic">
           <Key>
@@ -364,8 +359,8 @@
           <Property Name="UpdatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="AppUser" Relationship="Self.FK_AppMusic_AppUser_UserId" FromRole="AppMusic" ToRole="AppUser" />
-          <NavigationProperty Name="AppMusicDetails" Relationship="Self.FK_AppMusicDetail_AppMusic_MusicId" FromRole="AppMusic" ToRole="AppMusicDetail" />
+          <NavigationProperty Name="AppUser" Relationship="DiscothequeDbModel.FK_AppMusic_AppUser_UserId" FromRole="AppMusic" ToRole="AppUser" />
+          <NavigationProperty Name="AppMusicDetail" Relationship="DiscothequeDbModel.FK_AppMusicDetail_AppMusic_MusicId" FromRole="AppMusic" ToRole="AppMusicDetail" />
         </EntityType>
         <EntityType Name="AppMusicDetail">
           <Key>
@@ -375,12 +370,11 @@
           <Property Name="CreatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="DiscothequeId" Type="Int32" Nullable="false" />
-          <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Discount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="MusicId" Type="Int32" Nullable="false" />
           <Property Name="UpdatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <NavigationProperty Name="AppDiscotheque" Relationship="Self.FK_AppMusicDetail_AppDiscotheque_DiscothequeId" FromRole="AppMusicDetail" ToRole="AppDiscotheque" />
-          <NavigationProperty Name="AppMusic" Relationship="Self.FK_AppMusicDetail_AppMusic_MusicId" FromRole="AppMusicDetail" ToRole="AppMusic" />
+          <NavigationProperty Name="AppMusic" Relationship="DiscothequeDbModel.FK_AppMusicDetail_AppMusic_MusicId" FromRole="AppMusicDetail" ToRole="AppMusic" />
         </EntityType>
         <EntityType Name="AppRol">
           <Key>
@@ -392,32 +386,32 @@
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <NavigationProperty Name="AppEmployees" Relationship="Self.FK_AppEmployee_AppRol_RolId" FromRole="AppRol" ToRole="AppEmployee" />
+          <NavigationProperty Name="AppEmployee" Relationship="DiscothequeDbModel.FK_AppEmployee_AppRol_RolId" FromRole="AppRol" ToRole="AppEmployee" />
         </EntityType>
         <EntityType Name="AppUser">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CreatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Gender" Type="Int32" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="RolId" Type="Int32" Nullable="false" />
           <Property Name="UpdatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="Status" Type="Int32" Nullable="false" />
           <Property Name="Age" Type="Int32" />
-          <NavigationProperty Name="AppMusics" Relationship="Self.FK_AppMusic_AppUser_UserId" FromRole="AppUser" ToRole="AppMusic" />
+          <NavigationProperty Name="AppMusic" Relationship="DiscothequeDbModel.FK_AppMusic_AppUser_UserId" FromRole="AppUser" ToRole="AppMusic" />
         </EntityType>
-        <Association Name="FK_AppDiscotheque_AppCompanie_CompanyId">
-          <End Role="AppCompanie" Type="Self.AppCompanie" Multiplicity="1" />
-          <End Role="AppDiscotheque" Type="Self.AppDiscotheque" Multiplicity="*" />
+        <Association Name="FK_AppDiscotheque_AppCompany">
+          <End Type="DiscothequeDbModel.AppCompanie" Role="AppCompanie" Multiplicity="1" />
+          <End Type="DiscothequeDbModel.AppDiscotheque" Role="AppDiscotheque" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AppCompanie">
               <PropertyRef Name="Id" />
@@ -427,33 +421,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_AppDiscothequeDetail_AppDiscotheque_DiscothequeId">
-          <End Role="AppDiscotheque" Type="Self.AppDiscotheque" Multiplicity="1" />
-          <End Role="AppDiscothequeDetail" Type="Self.AppDiscothequeDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AppDiscotheque">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AppDiscothequeDetail">
-              <PropertyRef Name="DiscothequeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AppMusicDetail_AppDiscotheque_DiscothequeId">
-          <End Role="AppDiscotheque" Type="Self.AppDiscotheque" Multiplicity="1" />
-          <End Role="AppMusicDetail" Type="Self.AppMusicDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AppDiscotheque">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AppMusicDetail">
-              <PropertyRef Name="DiscothequeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_AppDiscothequeDetail_AppDiscothequeCategorie_DiscothequeCategoryId">
-          <End Role="AppDiscothequeCategorie" Type="Self.AppDiscothequeCategorie" Multiplicity="1" />
-          <End Role="AppDiscothequeDetail" Type="Self.AppDiscothequeDetail" Multiplicity="*" />
+          <End Type="DiscothequeDbModel.AppDiscothequeCategorie" Role="AppDiscothequeCategorie" Multiplicity="1" />
+          <End Type="DiscothequeDbModel.AppDiscothequeDetail" Role="AppDiscothequeDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AppDiscothequeCategorie">
               <PropertyRef Name="Id" />
@@ -464,8 +434,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_AppEmployee_AppRol_RolId">
-          <End Role="AppRol" Type="Self.AppRol" Multiplicity="1" />
-          <End Role="AppEmployee" Type="Self.AppEmployee" Multiplicity="*" />
+          <End Type="DiscothequeDbModel.AppRol" Role="AppRol" Multiplicity="1" />
+          <End Type="DiscothequeDbModel.AppEmployee" Role="AppEmployee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AppRol">
               <PropertyRef Name="Id" />
@@ -476,8 +446,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_AppMusic_AppUser_UserId">
-          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
-          <End Role="AppMusic" Type="Self.AppMusic" Multiplicity="*" />
+          <End Type="DiscothequeDbModel.AppUser" Role="AppUser" Multiplicity="1" />
+          <End Type="DiscothequeDbModel.AppMusic" Role="AppMusic" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AppUser">
               <PropertyRef Name="Id" />
@@ -488,8 +458,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_AppMusicDetail_AppMusic_MusicId">
-          <End Role="AppMusic" Type="Self.AppMusic" Multiplicity="1" />
-          <End Role="AppMusicDetail" Type="Self.AppMusicDetail" Multiplicity="*" />
+          <End Type="DiscothequeDbModel.AppMusic" Role="AppMusic" Multiplicity="1" />
+          <End Type="DiscothequeDbModel.AppMusicDetail" Role="AppMusicDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AppMusic">
               <PropertyRef Name="Id" />
@@ -499,191 +469,152 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DiscothequeDbEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AppCompanies" EntityType="Self.AppCompanie" />
-          <EntitySet Name="AppDiscotheques" EntityType="Self.AppDiscotheque" />
-          <EntitySet Name="AppDiscothequeCategories" EntityType="Self.AppDiscothequeCategorie" />
-          <EntitySet Name="AppDiscothequeDetails" EntityType="Self.AppDiscothequeDetail" />
-          <EntitySet Name="AppEmployees" EntityType="Self.AppEmployee" />
-          <EntitySet Name="AppMusics" EntityType="Self.AppMusic" />
-          <EntitySet Name="AppMusicDetails" EntityType="Self.AppMusicDetail" />
-          <EntitySet Name="AppRols" EntityType="Self.AppRol" />
-          <EntitySet Name="AppUsers" EntityType="Self.AppUser" />
-          <AssociationSet Name="FK_AppDiscotheque_AppCompanie_CompanyId" Association="Self.FK_AppDiscotheque_AppCompanie_CompanyId">
-            <End Role="AppCompanie" EntitySet="AppCompanies" />
-            <End Role="AppDiscotheque" EntitySet="AppDiscotheques" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AppDiscothequeDetail_AppDiscotheque_DiscothequeId" Association="Self.FK_AppDiscothequeDetail_AppDiscotheque_DiscothequeId">
-            <End Role="AppDiscotheque" EntitySet="AppDiscotheques" />
-            <End Role="AppDiscothequeDetail" EntitySet="AppDiscothequeDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AppMusicDetail_AppDiscotheque_DiscothequeId" Association="Self.FK_AppMusicDetail_AppDiscotheque_DiscothequeId">
-            <End Role="AppDiscotheque" EntitySet="AppDiscotheques" />
-            <End Role="AppMusicDetail" EntitySet="AppMusicDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AppDiscothequeDetail_AppDiscothequeCategorie_DiscothequeCategoryId" Association="Self.FK_AppDiscothequeDetail_AppDiscothequeCategorie_DiscothequeCategoryId">
-            <End Role="AppDiscothequeCategorie" EntitySet="AppDiscothequeCategories" />
-            <End Role="AppDiscothequeDetail" EntitySet="AppDiscothequeDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AppEmployee_AppRol_RolId" Association="Self.FK_AppEmployee_AppRol_RolId">
-            <End Role="AppRol" EntitySet="AppRols" />
-            <End Role="AppEmployee" EntitySet="AppEmployees" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AppMusic_AppUser_UserId" Association="Self.FK_AppMusic_AppUser_UserId">
-            <End Role="AppUser" EntitySet="AppUsers" />
-            <End Role="AppMusic" EntitySet="AppMusics" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AppMusicDetail_AppMusic_MusicId" Association="Self.FK_AppMusicDetail_AppMusic_MusicId">
-            <End Role="AppMusic" EntitySet="AppMusics" />
-            <End Role="AppMusicDetail" EntitySet="AppMusicDetails" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DiscothequeDbModelStoreContainer" CdmEntityContainer="DiscothequeDbEntities">
-          <EntitySetMapping Name="AppCompanies">
+          <EntitySetMapping Name="AppCompanie">
             <EntityTypeMapping TypeName="DiscothequeDbModel.AppCompanie">
               <MappingFragment StoreEntitySet="AppCompanie">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Logo" ColumnName="Logo" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="Ruc" ColumnName="Ruc" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
                 <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="Ruc" ColumnName="Ruc" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AppDiscotheques">
+          <EntitySetMapping Name="AppDiscotheque">
             <EntityTypeMapping TypeName="DiscothequeDbModel.AppDiscotheque">
               <MappingFragment StoreEntitySet="AppDiscotheque">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-                <ScalarProperty Name="Cp" ColumnName="Cp" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Facebook" ColumnName="Facebook" />
-                <ScalarProperty Name="Latitud" ColumnName="Latitud" />
-                <ScalarProperty Name="Logo" ColumnName="Logo" />
-                <ScalarProperty Name="Longitud" ColumnName="Longitud" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+                <ScalarProperty Name="Facebook" ColumnName="Facebook" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Cp" ColumnName="Cp" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AppDiscothequeCategories">
+          <EntitySetMapping Name="AppDiscothequeCategorie">
             <EntityTypeMapping TypeName="DiscothequeDbModel.AppDiscothequeCategorie">
               <MappingFragment StoreEntitySet="AppDiscothequeCategorie">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
                 <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AppDiscothequeDetails">
+          <EntitySetMapping Name="AppDiscothequeDetail">
             <EntityTypeMapping TypeName="DiscothequeDbModel.AppDiscothequeDetail">
               <MappingFragment StoreEntitySet="AppDiscothequeDetail">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="DiscothequeCategoryId" ColumnName="DiscothequeCategoryId" />
                 <ScalarProperty Name="DiscothequeId" ColumnName="DiscothequeId" />
+                <ScalarProperty Name="DiscothequeCategoryId" ColumnName="DiscothequeCategoryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AppEmployees">
+          <EntitySetMapping Name="AppEmployee">
             <EntityTypeMapping TypeName="DiscothequeDbModel.AppEmployee">
               <MappingFragment StoreEntitySet="AppEmployee">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Age" ColumnName="Age" />
-                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="RolId" ColumnName="RolId" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="RolId" ColumnName="RolId" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AppMusics">
+          <EntitySetMapping Name="AppMusic">
             <EntityTypeMapping TypeName="DiscothequeDbModel.AppMusic">
               <MappingFragment StoreEntitySet="AppMusic">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AppMusicDetails">
+          <EntitySetMapping Name="AppMusicDetail">
             <EntityTypeMapping TypeName="DiscothequeDbModel.AppMusicDetail">
               <MappingFragment StoreEntitySet="AppMusicDetail">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="DiscothequeId" ColumnName="DiscothequeId" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="MusicId" ColumnName="MusicId" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
                 <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="MusicId" ColumnName="MusicId" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="DiscothequeId" ColumnName="DiscothequeId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AppRols">
+          <EntitySetMapping Name="AppRol">
             <EntityTypeMapping TypeName="DiscothequeDbModel.AppRol">
               <MappingFragment StoreEntitySet="AppRol">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
                 <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AppUsers">
+          <EntitySetMapping Name="AppUser">
             <EntityTypeMapping TypeName="DiscothequeDbModel.AppUser">
               <MappingFragment StoreEntitySet="AppUser">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="RolId" ColumnName="RolId" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="RolId" ColumnName="RolId" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -701,8 +632,8 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>

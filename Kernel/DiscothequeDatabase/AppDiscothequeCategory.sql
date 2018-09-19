@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[AppCategory]
+﻿CREATE TABLE [dbo].[AppDiscothequeCategory]
 (
 	[Id]				INT				NOT NULL PRIMARY KEY IDENTITY, 
     [Description]		NVARCHAR(50)	NULL,

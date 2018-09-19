@@ -1,16 +1,26 @@
-﻿using System;
+﻿using DomainModels.Model;
+using DomainServices.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+using System.Web.Http;
 
 namespace Discotheque.Api.Controllers
 {
-    public class CalendarController : Controller
+    public class CalendarController : ApiController
     {
-        public IActionResult Index()
+        #region Fields
+
+        #endregion
+
+        #region Constructor
+
+        #endregion
+
+        public IHttpActionResult Index()
         {
-            return View();
+            return this.Ok();
         }
     }
 }

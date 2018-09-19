@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -104,9 +105,13 @@
       <DependentUpon>DiscothequeDb.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\EntityBaseRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IEntityBase.cs" />
     <Compile Include="Repositories\Interfaces\IEntityBaseRepository.cs" />
-    <Compile Include="Repositories\Interfaces\IRepository.cs" />
-    <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\Interfaces\IAsyncRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IRepositoryManager.cs" />
+    <Compile Include="Repositories\AsyncRespository.cs" />
+    <Compile Include="Repositories\RepositoryManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AccountModel\" />

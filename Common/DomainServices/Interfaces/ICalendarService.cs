@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DomainModels.Repositories.Interfaces;
 
 namespace DomainServices.Interfaces
 {
-    class ICalendarService
+    public interface ICalendarService 
     {
     }
 }

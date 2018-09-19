@@ -1,7 +1,11 @@
 ﻿using DomainModels.Model;
-using DomainModels.Repositories.Interfaces;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace DomainServices.Interfaces
 {
-    public interface ICategoryService : IEntityBaseRepository<AppDiscothequeCategorie> { }
+    public interface ICategoryService
+    {
+        Task<IEnumerable<AppDiscothequeCategorie>> GetAll();
+    }
 }

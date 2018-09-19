@@ -23,7 +23,6 @@ namespace DomainModels.Model
         public string UpdatedBy { get; set; }
         public System.DateTime UpdatedDate { get; set; }
     
-        public virtual AppDiscotheque AppDiscotheque { get; set; }
         public virtual AppMusic AppMusic { get; set; }
     }
 }

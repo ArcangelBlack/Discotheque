@@ -63,7 +63,7 @@
     <Build Include="AppDiscotheque.sql" />
     <Build Include="AppEmployee.sql" />
     <Build Include="AppCompany.sql" />
-    <Build Include="AppCategory.sql" />
+    <Build Include="AppDiscothequeCategory.sql" />
     <Build Include="AppCalendar.sql" />
     <Build Include="AppMusic.sql" />
     <Build Include="AppNewsEvents.sql" />
@@ -71,6 +71,7 @@
     <Build Include="AppLogin.sql" />
     <Build Include="AppRoles.sql" />
     <Build Include="AppUser.sql" />
+    <Build Include="AppDiscothequeDetail.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="DiscothequeDb.refactorlog" />

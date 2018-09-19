@@ -18,7 +18,6 @@ namespace DomainModels.Model
         public int DiscothequeCategoryId { get; set; }
         public int DiscothequeId { get; set; }
     
-        public virtual AppDiscotheque AppDiscotheque { get; set; }
         public virtual AppDiscothequeCategorie AppDiscothequeCategorie { get; set; }
     }
 }

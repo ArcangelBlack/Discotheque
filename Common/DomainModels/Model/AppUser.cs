@@ -17,7 +17,7 @@ namespace DomainModels.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public AppUser()
         {
-            this.AppMusics = new HashSet<AppMusic>();
+            this.AppMusic = new HashSet<AppMusic>();
         }
     
         public int Id { get; set; }
@@ -37,6 +37,6 @@ namespace DomainModels.Model
         public Nullable<int> Age { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AppMusic> AppMusics { get; set; }
+        public virtual ICollection<AppMusic> AppMusic { get; set; }
     }
 }

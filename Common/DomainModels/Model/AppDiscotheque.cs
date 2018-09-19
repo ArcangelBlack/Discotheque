@@ -14,13 +14,6 @@ namespace DomainModels.Model
     
     public partial class AppDiscotheque
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public AppDiscotheque()
-        {
-            this.AppDiscothequeDetails = new HashSet<AppDiscothequeDetail>();
-            this.AppMusicDetails = new HashSet<AppMusicDetail>();
-        }
-    
         public int Id { get; set; }
         public string Address { get; set; }
         public int CompanyId { get; set; }
@@ -40,9 +33,5 @@ namespace DomainModels.Model
         public string WebSite { get; set; }
     
         public virtual AppCompanie AppCompanie { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AppDiscothequeDetail> AppDiscothequeDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AppMusicDetail> AppMusicDetails { get; set; }
     }
 }

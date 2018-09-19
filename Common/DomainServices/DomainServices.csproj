@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,6 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,12 +45,14 @@
   <ItemGroup>
     <Compile Include="CalendarService.cs" />
     <Compile Include="CategoryService.cs" />
+    <Compile Include="CompanyService.cs" />
     <Compile Include="DiscothequeService.cs" />
     <Compile Include="EmployeeService.cs" />
     <Compile Include="Interfaces\ICalendarService.cs" />
     <Compile Include="Interfaces\ICategoryService.cs" />
     <Compile Include="Interfaces\ICompanyService.cs" />
     <Compile Include="Interfaces\IDiscothequeService.cs" />
+    <Compile Include="Interfaces\IDocumentService.cs" />
     <Compile Include="Interfaces\IEmployeeService.cs" />
     <Compile Include="Interfaces\IMusicService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
