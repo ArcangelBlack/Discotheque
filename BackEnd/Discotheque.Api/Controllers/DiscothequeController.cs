@@ -68,7 +68,8 @@ namespace Discotheque.Api.Controllers
             return Json(result);
         }
 
-        [HttpGet()]
+        [HttpGet]
+        [Route("{id}")]
         public async Task<IHttpActionResult> Get(int id)
         {
             var result = await this.discothequeService.GetById(id);
@@ -76,12 +77,9 @@ namespace Discotheque.Api.Controllers
             if (result != null)
             {
                 //var _userVM = Mapper.Map<User, UserViewModel>(_user);
-                return  Ok(result);
+                return Ok(result);
             }
-            else
-            {
-                return NotFound();
-            }
+            return NotFound();
         }
 
         [HttpPost]
@@ -98,9 +96,11 @@ namespace Discotheque.Api.Controllers
             vM.CreatedDate = dateTime;
             vM.UpdatedDate = dateTime;
 
-            this.discothequeService.Add(vM);
-            //await this.discothequeService.Commit();
-
+            var resultC = await this.discothequeService.Create(vM);
+            if (resultC != 1)
+            {
+                return this.StatusCode(HttpStatusCode.BadRequest);
+            }
             //user = Mapper.Map<User, UserViewModel>(_newUser);
 
             var result = CreatedAtRoute("GetEmployee", new { controller = "Employee", id = vM.Id }, vM);
@@ -128,10 +128,13 @@ namespace Discotheque.Api.Controllers
                     result.WebSite = vM.WebSite;
                     result.UpdatedDate = System.DateTime.Now;
 
-                    this.discothequeService.Update(result);
-                    //await this.discothequeService.Commit();
+                    var resultU = await this.discothequeService.Update(result);
+                    if (resultU != 1)
+                    {
+                        return this.StatusCode(HttpStatusCode.BadRequest);
+                    }
+                    return this.Ok();
                 }
-                return this.StatusCode(HttpStatusCode.BadRequest);
             }
             catch (Exception ex)
             {
@@ -151,11 +154,12 @@ namespace Discotheque.Api.Controllers
             }
             else
             {
-                this.discothequeService.Delete(result);
-
-                //await this.discothequeService.Commit();
-
-                return this.StatusCode(HttpStatusCode.BadRequest);
+                var resultD = await this.discothequeService.Delete(id);
+                if (resultD != 1)
+                {
+                    return this.StatusCode(HttpStatusCode.BadRequest);
+                }
+                return this.Ok();
             }
         }
     }

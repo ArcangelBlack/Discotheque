@@ -26,8 +26,7 @@ namespace Discotheque.Api.Controllers
 
         #endregion
 
-
-        [HttpGet()]
+        [HttpGet]
         public async Task<IHttpActionResult> GetAll()
         {
             var result = new List<AppCompanie>();
@@ -41,92 +40,91 @@ namespace Discotheque.Api.Controllers
             return Json(result);
         }
 
-        //[HttpGet()]
-        //public async Task<IHttpActionResult> Get(int id)
-        //{
-        //    var result = await this.companyService.GetById(id);
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<IHttpActionResult> Get(int id)
+        {
+            var result = await this.companyService.GetById(id);
 
-        //    if (result != null)
-        //    {
-        //        //var _userVM = Mapper.Map<User, UserViewModel>(_user);
-        //        return Ok(result);
-        //    }
-        //    else
-        //    {
-        //        return NotFound();
-        //    }
-        //}
+            if (result != null)
+            {
+                //var _userVM = Mapper.Map<User, UserViewModel>(_user);
+                return Ok(result);
+            }
+            return NotFound();
+        }
 
-        //[HttpPost]
-        //public async Task<IHttpActionResult> Create([FromBody]AppCompanie vM)
-        //{
+        [HttpPost]
+        public async Task<IHttpActionResult> Create([FromBody]AppCompanie vM)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+            var dateTime = System.DateTime.Now;
 
-        //    var dateTime = System.DateTime.Now;
+            vM.CreatedBy = "Obtener Usuario Actual";
+            vM.CreatedDate = dateTime;
+            vM.UpdatedDate = dateTime;
 
-        //    vM.CreatedBy = "Obtener Usuario Actual";
-        //    vM.CreatedDate = dateTime;
-        //    vM.UpdatedDate = dateTime;
+            //User _newUser = new User { Name = user.Name, Profession = user.Profession, Avatar = user.Avatar };
 
-        //    //User _newUser = new User { Name = user.Name, Profession = user.Profession, Avatar = user.Avatar };
+            var resultSave = await this.companyService.Create(vM);
+            if (resultSave != 1)
+            {
+                return this.StatusCode(HttpStatusCode.BadRequest);
+            }
+            //user = Mapper.Map<User, UserViewModel>(_newUser);
 
-        //    this.companyService.Add(vM);
-        //    //await this.companyService.Commit();
+            var result = CreatedAtRoute("GetCompany", new { controller = "Company", id = vM.Id }, vM);
+            return result;
+        }
 
-        //    //user = Mapper.Map<User, UserViewModel>(_newUser);
+        [HttpPut]
+        public async Task<IHttpActionResult> Put(int id, [FromBody]AppCompanie vM)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-        //    var result = CreatedAtRoute("GetCompany", new { controller = "Company", id = vM.Id }, vM);
-        //    return result;
-        //}
+            var result = await this.companyService.GetById(id);
 
-        //[HttpPut()]
-        //public async Task<IHttpActionResult> Put(int id, [FromBody]AppCompanie vM)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+            if (result == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                result.Name = vM.Name;
+                result.UpdatedDate = System.DateTime.Now;
+                var resultU = await this.companyService.Update(result);
+                if (resultU != 1)
+                {
+                    return this.StatusCode(HttpStatusCode.BadRequest);
+                }
+                //user = Mapper.Map<User, UserViewModel>(_userDb);
+                return this.Ok();
+            }
+        }
 
-        //    var result = await this.companyService.GetById(id);
-
-        //    if (result == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    else
-        //    {
-        //        this.companyService.Update(result);
-        //        //await this.companyService.Commit();
-        //    }
-
-        //    //user = Mapper.Map<User, UserViewModel>(_userDb);
-
-        //    return this.StatusCode(HttpStatusCode.BadRequest);
-        //}
-
-        //[HttpDelete()]
-        //public async Task<IHttpActionResult> Delete(int id)
-        //{
-        //    var result = await this.companyService.GetById(id);
-
-        //    if (result == null)
-        //    {
-
-        //        return this.StatusCode(HttpStatusCode.BadRequest);
-        //    }
-        //    else
-        //    {
-        //        companyService.Delete(result);
-
-        //        //await companyService.Commit();
-
-
-        //        return this.StatusCode(HttpStatusCode.BadRequest);
-        //    }
-        //}
+        [HttpDelete()]
+        public async Task<IHttpActionResult> Delete(int id)
+        {
+            if (id == 0)
+            {
+                return this.StatusCode(HttpStatusCode.BadRequest);
+            }
+            else
+            {
+                var result = await companyService.Delete(id);
+                if (result != 1)
+                {
+                    return this.StatusCode(HttpStatusCode.BadRequest);
+                }
+                return this.Ok();
+            }
+        }
     }
 }

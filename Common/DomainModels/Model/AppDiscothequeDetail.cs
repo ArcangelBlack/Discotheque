@@ -15,9 +15,9 @@ namespace DomainModels.Model
     public partial class AppDiscothequeDetail
     {
         public int Id { get; set; }
-        public int DiscothequeCategoryId { get; set; }
+        public int CategoryId { get; set; }
         public int DiscothequeId { get; set; }
     
-        public virtual AppDiscothequeCategorie AppDiscothequeCategorie { get; set; }
+        public virtual AppCategorie AppCategorie { get; set; }
     }
 }

@@ -63,7 +63,7 @@
     <Build Include="AppDiscotheque.sql" />
     <Build Include="AppEmployee.sql" />
     <Build Include="AppCompany.sql" />
-    <Build Include="AppDiscothequeCategory.sql" />
+    <Build Include="AppCategory.sql" />
     <Build Include="AppCalendar.sql" />
     <Build Include="AppMusic.sql" />
     <Build Include="AppNewsEvents.sql" />

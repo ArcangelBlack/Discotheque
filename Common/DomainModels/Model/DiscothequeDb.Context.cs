@@ -26,14 +26,15 @@ namespace DomainModels.Model
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<AppCategorie> AppCategorie { get; set; }
         public virtual DbSet<AppCompanie> AppCompanie { get; set; }
         public virtual DbSet<AppDiscotheque> AppDiscotheque { get; set; }
-        public virtual DbSet<AppDiscothequeCategorie> AppDiscothequeCategorie { get; set; }
         public virtual DbSet<AppDiscothequeDetail> AppDiscothequeDetail { get; set; }
         public virtual DbSet<AppEmployee> AppEmployee { get; set; }
         public virtual DbSet<AppMusic> AppMusic { get; set; }
         public virtual DbSet<AppMusicDetail> AppMusicDetail { get; set; }
         public virtual DbSet<AppRol> AppRol { get; set; }
         public virtual DbSet<AppUser> AppUser { get; set; }
+        public virtual DbSet<AppCalendar> AppCalendar { get; set; }
     }
 }

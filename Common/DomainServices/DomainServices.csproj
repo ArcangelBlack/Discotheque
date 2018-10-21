@@ -49,8 +49,8 @@
     <Compile Include="DiscothequeService.cs" />
     <Compile Include="EmployeeService.cs" />
     <Compile Include="Interfaces\ICalendarService.cs" />
-    <Compile Include="Interfaces\ICategoryService.cs" />
     <Compile Include="Interfaces\ICompanyService.cs" />
+    <Compile Include="Interfaces\ICategoryService.cs" />
     <Compile Include="Interfaces\IDiscothequeService.cs" />
     <Compile Include="Interfaces\IDocumentService.cs" />
     <Compile Include="Interfaces\IEmployeeService.cs" />

@@ -27,12 +27,12 @@ namespace Discotheque.Api.Controllers
 
         #endregion
 
-        [HttpGet()]
+        [HttpGet]
         public async Task<IHttpActionResult> GetAll()
         {
             try
             {
-                var result = new List<AppDiscothequeCategorie>();
+                var result = new List<AppCategorie>();
 
                 var resultService = await this.categoryService.GetAll();
                 var enumerable = resultService.ToList();
@@ -50,23 +50,22 @@ namespace Discotheque.Api.Controllers
         }
 
         [HttpGet]
+        [Route("{id}")]
         public async Task<IHttpActionResult> Get(int id)
         {
-            //var result = await this.categoryService.GetById(id);
+            var result = await this.categoryService.GetById(id);
 
-            //if (result != null)
-            //{
-            //    //var _userVM = Mapper.Map<User, UserViewModel>(_user);
-            //    return this.Ok(result);
-            //}
-
-            return this.StatusCode(HttpStatusCode.BadRequest);
+            if (result != null)
+            {
+                //var _userVM = Mapper.Map<User, UserViewModel>(_user);
+                return this.Json(result);
+            }
+            return NotFound();
         }
 
         [HttpPost]
-        public async Task<IHttpActionResult> Create([FromBody]AppDiscothequeCategorie vM)
+        public async Task<IHttpActionResult> Create([FromBody]AppCategorie vM)
         {
-
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -78,8 +77,11 @@ namespace Discotheque.Api.Controllers
             vM.CreatedDate = dateTime;
             vM.UpdatedDate = dateTime;
 
-            //this.categoryService.Add(vM);
-            //await this.categoryService.Commit();
+            var resultC = await this.categoryService.Create(vM);
+            if (resultC != 1)
+            {
+                return this.StatusCode(HttpStatusCode.BadRequest);
+            }
 
             //user = Mapper.Map<User, UserViewModel>(_newUser);
 
@@ -88,47 +90,48 @@ namespace Discotheque.Api.Controllers
         }
 
         [HttpPut]
-        public async Task<IHttpActionResult> Put(int id, [FromBody]AppDiscothequeCategorie vM)
+        public async Task<IHttpActionResult> Put(int id, [FromBody]AppCategorie vM)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            //var result = await this.categoryService.GetById(id);
+            var result = await this.categoryService.GetById(id);
 
-            //if (result == null)
-            //{
-            //    return NotFound();
-            //}
-            //else
-            //{
-            //    result.Description = vM.Description;
-            //    result.UpdatedDate = System.DateTime.Now;
-            //    //await this.categoryService.Commit();
-            //}
-            return this.Ok();
+            if (result == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                result.Description = vM.Description;
+                result.UpdatedDate = System.DateTime.Now;
+                var resultU = await this.categoryService.Update(result);
+                if (resultU != 1)
+                {
+                    return this.StatusCode(HttpStatusCode.BadRequest);
+                }
+                return this.Ok();
+            }
         }
 
         [HttpDelete()]
         public async Task<IHttpActionResult> Delete(int id)
         {
-            //var result = await this.categoryService.GetById(id);
-
-            //if (result == null)
-            //{
-
-            //    return this.StatusCode(HttpStatusCode.BadRequest);
-            //}
-            //else
-            //{
-            //    //categoryService.Delete(result);
-
-            //    //await categoryService.Commit();
-
-
-            return this.StatusCode(HttpStatusCode.BadRequest);
-            //}
+            if (id == 0)
+            {
+                return this.StatusCode(HttpStatusCode.BadRequest);
+            }
+            else
+            {
+                var result = await this.categoryService.Delete(id);
+                if (result != 1)
+                {
+                    return this.StatusCode(HttpStatusCode.BadRequest);
+                }
+                return this.Ok();
+            }
         }
 
     }

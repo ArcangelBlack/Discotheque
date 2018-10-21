@@ -1,7 +1,19 @@
 ﻿using DomainModels.Model;
-using DomainModels.Repositories.Interfaces;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace DomainServices.Interfaces
 {
-    public interface IEmployeeService : IAsyncRepository<AppEmployee> { }
+    public interface IEmployeeService
+    {
+        Task<IEnumerable<AppEmployee>> GetAll();
+
+        Task<AppEmployee> GetById(int id);
+
+        Task<int> Create(AppEmployee entity);
+
+        Task<int> Update(AppEmployee entity);
+
+        Task<int> Delete(int id);
+    }
 }

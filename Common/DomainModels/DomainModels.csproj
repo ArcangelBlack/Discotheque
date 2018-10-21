@@ -52,7 +52,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\Gender.cs" />
-    <Compile Include="GoogleModel\Class1.cs" />
     <Compile Include="GoogleModel\ContextModel.cs" />
     <Compile Include="GoogleModel\FacetModel.cs" />
     <Compile Include="GoogleModel\GoogleSearchResponseModel.cs" />
@@ -62,13 +61,16 @@
     <Compile Include="GoogleModel\PageModel.cs" />
     <Compile Include="GoogleModel\QueriesModel.cs" />
     <Compile Include="GoogleModel\UrlModel.cs" />
+    <Compile Include="Model\AppCalendar.cs">
+      <DependentUpon>DiscothequeDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AppCategorie.cs">
+      <DependentUpon>DiscothequeDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\AppCompanie.cs">
       <DependentUpon>DiscothequeDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\AppDiscotheque.cs">
-      <DependentUpon>DiscothequeDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\AppDiscothequeCategorie.cs">
       <DependentUpon>DiscothequeDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\AppDiscothequeDetail.cs">

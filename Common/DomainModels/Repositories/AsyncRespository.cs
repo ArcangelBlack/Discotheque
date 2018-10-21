@@ -64,10 +64,10 @@ namespace DomainModels.Repositories
             return await query.ToListAsync();
         }
 
-        public async Task Add(TEntity entity)
+        public async Task<int> Add(TEntity entity)
         {
             this.Context.Set<TEntity>().Add(entity);
-            await this.Context.SaveChangesAsync();
+            return await this.Context.SaveChangesAsync();
         }
 
         public async Task<TEntity> AddAndReturn(TEntity entity)
@@ -83,11 +83,11 @@ namespace DomainModels.Repositories
             await this.Context.SaveChangesAsync();
         }
 
-        public async Task Update(TEntity entity)
+        public async Task<int> Update(TEntity entity)
         {
             this.Context.Set<TEntity>().Attach(entity);
             this.Context.Entry(entity).State = EntityState.Modified;
-            await this.Context.SaveChangesAsync();
+            return await this.Context.SaveChangesAsync();
         }
 
         public async Task UpdateEntity(TEntity entitySource, TEntity entityDestiny)
@@ -109,11 +109,11 @@ namespace DomainModels.Repositories
             return exist;
         }
 
-        public async Task Delete(TEntity entity)
+        public async Task<int> Delete(TEntity entity)
         {
             this.Context.Set<TEntity>().Attach(entity);
             this.Context.Set<TEntity>().Remove(entity);
-            await this.Context.SaveChangesAsync();
+            return await this.Context.SaveChangesAsync();
         }
 
         public async Task<int> DeleteAndReturn(TEntity entity)

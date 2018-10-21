@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using DomainModels.Model;
 
 namespace DomainModels.Repositories.Interfaces
 {
@@ -18,19 +19,19 @@ namespace DomainModels.Repositories.Interfaces
 
         Task<IEnumerable<TEntity>> SelectIncludes(Expression<Func<TEntity, bool>> predicate, params Expression<Func<TEntity, object>>[] includes);
 
-        Task Add(TEntity entity);
+        Task<int> Add(TEntity entity);
 
         Task<TEntity> AddAndReturn(TEntity entity);
 
         Task AddRange(IEnumerable<TEntity> entityList);
 
-        Task Update(TEntity entity);
+        Task<int> Update(TEntity entity);
 
         Task UpdateEntity(TEntity entitySource, TEntity entityDestiny);
 
         Task<TEntity> UpdateKeyAndReturn(TEntity entity, object key);
 
-        Task Delete(TEntity entity);
+        Task<int> Delete(TEntity entity);
 
         Task<int> DeleteAndReturn(TEntity entity);
 

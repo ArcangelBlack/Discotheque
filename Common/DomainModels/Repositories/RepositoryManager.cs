@@ -15,11 +15,13 @@ namespace DomainModels.Repositories
 
         #region Repositories
 
+        public IAsyncRepository<AppCalendar> CalendarRepository { get; private set; }
+
         public IAsyncRepository<AppCompanie> CompanieRepository { get; private set; }
 
         public IAsyncRepository<AppDiscotheque> DiscothequeRepository { get; private set; }
 
-        public IAsyncRepository<AppDiscothequeCategorie> DiscothequeCategoryRespository { get; private set; }
+        public IAsyncRepository<AppCategorie> CategoryRespository { get; private set; }
 
         public IAsyncRepository<AppDiscothequeDetail> DiscothequeDetailRespository { get; private set; }
 
@@ -41,9 +43,10 @@ namespace DomainModels.Repositories
         {
             this.Context = context as DiscothequeDbEntities;
 
+            this.CalendarRepository = new AsyncRespository<AppCalendar>(this.Context);
             this.CompanieRepository = new AsyncRespository<AppCompanie>(this.Context);
             this.DiscothequeRepository = new AsyncRespository<AppDiscotheque>(this.Context);
-            this.DiscothequeCategoryRespository = new AsyncRespository<AppDiscothequeCategorie>(this.Context);
+            this.CategoryRespository = new AsyncRespository<AppCategorie>(this.Context);
             this.DiscothequeDetailRespository = new AsyncRespository<AppDiscothequeDetail>(this.Context);
             this.EmployeeRespository = new AsyncRespository<AppEmployee>(this.Context);
             this.MusicRespository = new AsyncRespository<AppMusic>(this.Context);

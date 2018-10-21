@@ -12,22 +12,15 @@ namespace DomainModels.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class AppDiscothequeCategorie
+    public partial class AppCalendar
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public AppDiscothequeCategorie()
-        {
-            this.AppDiscothequeDetail = new HashSet<AppDiscothequeDetail>();
-        }
-    
         public int Id { get; set; }
+        public string Description { get; set; }
+        public Nullable<System.DateTime> StartDate { get; set; }
+        public Nullable<System.DateTime> EndDate { get; set; }
         public string CreatedBy { get; set; }
         public System.DateTime CreatedDate { get; set; }
-        public string Description { get; set; }
         public string UpdatedBy { get; set; }
-        public System.DateTime UpdatedDate { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AppDiscothequeDetail> AppDiscothequeDetail { get; set; }
+        public Nullable<System.DateTime> UpdatedDate { get; set; }
     }
 }

@@ -59,10 +59,7 @@ namespace Discotheque.Api.Controllers
                 //var _userVM = Mapper.Map<User, UserViewModel>(_user);
                 return Ok(result);
             }
-            else
-            {
-                return NotFound();
-            }
+            return NotFound();
         }
 
         [HttpPost]
@@ -74,8 +71,6 @@ namespace Discotheque.Api.Controllers
                 return BadRequest(ModelState);
             }
 
-            //User _newUser = new User { Name = user.Name, Profession = user.Profession, Avatar = user.Avatar };
-
             var dateTime = System.DateTime.Now;
 
             vM.BirthDate = dateTime;
@@ -83,11 +78,13 @@ namespace Discotheque.Api.Controllers
             vM.CreatedDate = dateTime;
             vM.UpdatedDate = dateTime;
 
-            this.employeeService.Add(vM);
-            //await this.employeeService.Commit();
+            var resultC = await this.employeeService.Create(vM);
+            if (resultC != 1)
+            {
+                return this.StatusCode(HttpStatusCode.BadRequest);
+            }
 
             //user = Mapper.Map<User, UserViewModel>(_newUser);
-
             var result = CreatedAtRoute("GetEmployee", new { controller = "Employee", id = vM.Id }, vM);
             return result;
         }
@@ -111,14 +108,13 @@ namespace Discotheque.Api.Controllers
                 result.Address = vM.Address;
                 result.UpdatedDate = System.DateTime.Now;
 
-                this.employeeService.Update(result);
-                //await this.employeeService.Commit();
+                var resultU = await this.employeeService.Update(result);
+                if (resultU != 1)
+                {
+                    return this.StatusCode(HttpStatusCode.BadRequest);
+                }
+                return this.Ok();
             }
-
-            //user = Mapper.Map<User, UserViewModel>(_userDb);
-
-
-            return this.StatusCode(HttpStatusCode.BadRequest);
         }
 
         [HttpDelete()]
@@ -128,31 +124,16 @@ namespace Discotheque.Api.Controllers
 
             if (result == null)
             {
-
                 return this.StatusCode(HttpStatusCode.BadRequest);
             }
             else
             {
-                //IEnumerable<Attendee> _attendees = _attendeeRepository.FindBy(a => a.UserId == id);
-                //IEnumerable<Schedule> _schedules = _scheduleRepository.FindBy(s => s.CreatorId == id);
-
-                //foreach (var attendee in _attendees)
-                //{
-                //    _attendeeRepository.Delete(attendee);
-                //}
-
-                //foreach (var schedule in _schedules)
-                //{
-                //    _attendeeRepository.DeleteWhere(a => a.ScheduleId == schedule.Id);
-                //    _scheduleRepository.Delete(schedule);
-                //}
-
-                this.employeeService.Delete(result);
-
-                //await this.employeeService.Commit();
-
-
-                return this.StatusCode(HttpStatusCode.BadRequest);
+                var resultD = await this.employeeService.Delete(id);
+                if (resultD != 1)
+                {
+                    return this.StatusCode(HttpStatusCode.BadRequest);
+                }
+                return this.Ok();
             }
         }
     }

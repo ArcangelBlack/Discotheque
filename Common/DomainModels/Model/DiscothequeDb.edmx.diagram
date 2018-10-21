@@ -4,21 +4,22 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d91a781930614cd4a005f515d5d8a4b0" Name="Diagram1" ZoomLevel="88">
+      <Diagram DiagramId="d91a781930614cd4a005f515d5d8a4b0" Name="Diagram1" ZoomLevel="48">
+        <EntityTypeShape EntityType="DiscothequeDbModel.AppCategorie" Width="1.5" PointX="7.75" PointY="1" />
         <EntityTypeShape EntityType="DiscothequeDbModel.AppCompanie" Width="1.5" PointX="7.75" PointY="5.5" />
         <EntityTypeShape EntityType="DiscothequeDbModel.AppDiscotheque" Width="1.5" PointX="10" PointY="5" />
-        <EntityTypeShape EntityType="DiscothequeDbModel.AppDiscothequeCategorie" Width="1.5" PointX="7.75" PointY="1" />
         <EntityTypeShape EntityType="DiscothequeDbModel.AppDiscothequeDetail" Width="1.5" PointX="10" PointY="1.25" />
         <EntityTypeShape EntityType="DiscothequeDbModel.AppEmployee" Width="1.5" PointX="5" PointY="6" />
         <EntityTypeShape EntityType="DiscothequeDbModel.AppMusic" Width="1.5" PointX="3" PointY="1.75" />
         <EntityTypeShape EntityType="DiscothequeDbModel.AppMusicDetail" Width="1.5" PointX="5.25" PointY="1.75" />
         <EntityTypeShape EntityType="DiscothequeDbModel.AppRol" Width="1.5" PointX="2.75" PointY="6.875" />
         <EntityTypeShape EntityType="DiscothequeDbModel.AppUser" Width="1.5" PointX="0.75" PointY="1" />
+        <AssociationConnector Association="DiscothequeDbModel.FK_AppDiscothequeDetail_CategoryId" />
         <AssociationConnector Association="DiscothequeDbModel.FK_AppDiscotheque_AppCompany" />
-        <AssociationConnector Association="DiscothequeDbModel.FK_AppDiscothequeDetail_AppDiscothequeCategorie_DiscothequeCategoryId" />
         <AssociationConnector Association="DiscothequeDbModel.FK_AppEmployee_AppRol_RolId" />
         <AssociationConnector Association="DiscothequeDbModel.FK_AppMusic_AppUser_UserId" />
         <AssociationConnector Association="DiscothequeDbModel.FK_AppMusicDetail_AppMusic_MusicId" />
+        <EntityTypeShape EntityType="DiscothequeDbModel.AppCalendar" Width="1.5" PointX="0.75" PointY="10.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

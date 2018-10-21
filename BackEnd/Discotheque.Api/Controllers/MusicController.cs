@@ -59,20 +59,22 @@ namespace Discotheque.Api.Controllers
         [HttpPost]
         public async Task<IHttpActionResult> Create([FromBody]AppMusic vM)
         {
-
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            //User _newUser = new User { Name = user.Name, Profession = user.Profession, Avatar = user.Avatar };
+            var dateTime = System.DateTime.Now;
+            vM.CreatedBy = "Obtener Usuario Actual";
+            vM.CreatedDate = dateTime;
+            vM.UpdatedDate = dateTime;
 
-            this.musicService.Add(vM);
-            //await this.musicService.Commit();
-
-            //user = Mapper.Map<User, UserViewModel>(_newUser);
-
-            var result = CreatedAtRoute("GetEmployee", new { controller = "Employee", id = vM.Id }, vM);
+            var resultC = await this.musicService.Create(vM);
+            if(resultC != 1)
+            {
+                return this.StatusCode(HttpStatusCode.BadRequest);
+            }
+            var result = this.CreatedAtRoute("GetEmployee", new { controller = "Employee", id = vM.Id }, vM);
             return result;
         }
 
@@ -92,14 +94,16 @@ namespace Discotheque.Api.Controllers
             }
             else
             {
-                this.musicService.Update(vM);
-                //await this.musicService.Commit();
+                result.Description = vM.Description;
+                result.UpdatedDate = System.DateTime.Now;
+
+                var resultU = await this.musicService.Update(result);
+                if (resultU != 1)
+                {
+                    return this.StatusCode(HttpStatusCode.BadRequest);
+                }
+                return this.Ok();
             }
-
-            //user = Mapper.Map<User, UserViewModel>(_userDb);
-
-
-            return this.StatusCode(HttpStatusCode.BadRequest);
         }
 
         [HttpDelete()]
@@ -114,26 +118,12 @@ namespace Discotheque.Api.Controllers
             }
             else
             {
-                //IEnumerable<Attendee> _attendees = _attendeeRepository.FindBy(a => a.UserId == id);
-                //IEnumerable<Schedule> _schedules = _scheduleRepository.FindBy(s => s.CreatorId == id);
-
-                //foreach (var attendee in _attendees)
-                //{
-                //    _attendeeRepository.Delete(attendee);
-                //}
-
-                //foreach (var schedule in _schedules)
-                //{
-                //    _attendeeRepository.DeleteWhere(a => a.ScheduleId == schedule.Id);
-                //    _scheduleRepository.Delete(schedule);
-                //}
-
-                this.musicService.Delete(result);
-
-                //await this.musicService.Commit();
-
-
-                return this.StatusCode(HttpStatusCode.BadRequest);
+                var resultD = await this.musicService.Delete(id);
+                if (resultD != 1)
+                {
+                    return this.StatusCode(HttpStatusCode.BadRequest);
+                }
+                return this.Ok();
             }
         }
     }

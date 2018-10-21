@@ -64,18 +64,17 @@ namespace Discotheque.Api.Controllers
                 return BadRequest(ModelState);
             }
 
-            //User _newUser = new User { Name = user.Name, Profession = user.Profession, Avatar = user.Avatar };
-
             var dateTime = System.DateTime.Now;
 
             vM.CreatedBy = "Obtener Usuario Actual";
             vM.CreatedDate = dateTime;
             vM.UpdatedDate = dateTime;
 
-            this.userService.Add(vM);
-            //await this.userService.Commit();
-
-            //user = Mapper.Map<User, UserViewModel>(_newUser);
+            var resultC = await this.userService.Create(vM);
+            if (resultC != 1)
+            {
+                return this.StatusCode(HttpStatusCode.BadRequest);
+            }
 
             var result = CreatedAtRoute("GetUser", new { controller = "Employee", id = vM.Id }, vM);
             return result;
@@ -97,16 +96,16 @@ namespace Discotheque.Api.Controllers
             }
             else
             {
-                result.Address = vM.Address;
+                result.Name = vM.Name;
                 result.UpdatedDate = System.DateTime.Now;
 
-                this.userService.Update(result);
-                //await this.userService.Commit();
+                var resultU = await this.userService.Update(result);
+                if (resultU != 1)
+                {
+                    return this.StatusCode(HttpStatusCode.BadRequest);
+                }
+                return this.Ok();
             }
-
-            //user = Mapper.Map<User, UserViewModel>(_userDb);
-
-            return this.StatusCode(HttpStatusCode.BadRequest);
         }
 
         [HttpDelete()]
@@ -120,25 +119,12 @@ namespace Discotheque.Api.Controllers
             }
             else
             {
-                //IEnumerable<Attendee> _attendees = _attendeeRepository.FindBy(a => a.UserId == id);
-                //IEnumerable<Schedule> _schedules = _scheduleRepository.FindBy(s => s.CreatorId == id);
-
-                //foreach (var attendee in _attendees)
-                //{
-                //    _attendeeRepository.Delete(attendee);
-                //}
-
-                //foreach (var schedule in _schedules)
-                //{
-                //    _attendeeRepository.DeleteWhere(a => a.ScheduleId == schedule.Id);
-                //    _scheduleRepository.Delete(schedule);
-                //}
-
-                this.userService.Delete(result);
-
-                //await this.userService.Commit();
-
-                return this.StatusCode(HttpStatusCode.BadRequest);
+                var resultD = await this.userService.Delete(id);
+                if (resultD != 1)
+                {
+                    return this.StatusCode(HttpStatusCode.BadRequest);
+                }
+                return this.Ok();
             }
         }
     }
